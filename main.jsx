@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App.jsx';
+import {Profile, Skills, Education} from './modules/profile.jsx';
 
-ReactDOM.render(<App />, document.getElementById('app'))
+
+ReactDOM.render(<Profile />, document.getElementById('profile'))
+ReactDOM.render(<Skills />, document.getElementById('skills'))
+ReactDOM.render(<Education />, document.getElementById('edu'))

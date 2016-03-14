@@ -1,0 +1,27 @@
+.profile_header {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+}
+.pro_pic {}
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+}
+.name {
+  height: 50%;
+}
+.skill, .education{
+  margin: 2%;
+}
+.skillHead, .eduHead{
+  font-size: 20px;
+}
+.skills, .edu_list{
+  font-size: 14px;
+  margin-left: 10px;
+}
+.edu_list{
+  padding: 10px;
+}
