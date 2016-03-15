@@ -6,7 +6,7 @@ body {
   flex-direction: row;
   margin: 2%;
 }
-.pro_pic {}
+
 .nameWrapper {
   display: flex;
   flex-direction: column;
@@ -20,6 +20,7 @@ body {
 }
 .skillHead, .eduHead {
   font-size: 20px;
+  margin-bottom: 5px;
 }
 .skills, .edu_list {
   font-size: 14px;
@@ -27,6 +28,7 @@ body {
 }
 .edu_list {
   padding: 10px;
+  border: 1px solid #FAD8D8;
 }
 .container {
   margin-left: 20%;
@@ -37,4 +39,12 @@ body {
 .card {
   padding: 20px;
   box-shadow: 1px 1px 15px 1px rgba(196, 196, 196, 1);
+}
+.changeProfile {
+  height: 24px;
+  width: 150px;
+  background-color: #959090;
+  position: relative;
+  text-align: center;
+  display: none;
 }
