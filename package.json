@@ -33,7 +33,9 @@
         "webpack-dev-server": "^1.14.1"
     },
     "scripts": {
-        "dev": "webpack-dev-server --content-base --progress --colors"
+        "dev": "webpack-dev-server --content-base --progress --colors",
+        "start": "NODE_ENV=production node server.jsx-loader",
+        "postinstall": "npm install webpack-dev-server"
     },
     "repository": {
         "type": "git",
