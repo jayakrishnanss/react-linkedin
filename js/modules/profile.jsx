@@ -1,6 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+class AddSkill extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <form className="addSKill">
+        <input type="text"/>
+      </form>
+    );
+  }
+}
+
+
 class Profile extends React.Component {
   constructor(props) {
       super(props);
@@ -57,6 +72,9 @@ class Skills extends React.Component {
     mouseOut() {
       this.setState({ showChangeLink: false })
     }
+    addSkillToProfile(){
+      debugger;
+    }
   render() {
      let styleObj = {
        "display": this.state.showChangeLink ? 'block' : 'none'
@@ -68,7 +86,7 @@ class Skills extends React.Component {
         <div className="skill card" onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
           <div className="skillHead">
             Skills
-            <span className="addButton" style={skill}>Add skill</span>
+            <span className="addButton" style={skill} onClicke={this.addSkillToProfile}>Add skill</span>
           </div>
         <div className="skillList">
           <p className="skills">skill1</p>
