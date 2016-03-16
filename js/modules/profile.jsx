@@ -42,27 +42,46 @@ class Profile extends React.Component {
 };
 
 class Skills extends React.Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showChangeLink: false
+        };
+        this.mouseOver = this.mouseOver.bind(this);
+        this.mouseOut = this.mouseOut.bind(this);
+    }
+    mouseOver(){
+      this.setState({ showChangeLink: true })
+    }
+    mouseOut() {
+      this.setState({ showChangeLink: false })
+    }
+  render() {
+     let styleObj = {
+       "display": this.state.showChangeLink ? 'block' : 'none'
+     }
+     let skill = {
+       "display": this.state.showChangeLink ? 'inline-block' : 'none'
+     }
     return (
-      <div className="skill card">
-        <div className="skillHead">Skills</div>
-        <div>
+        <div className="skill card" onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
+          <div className="skillHead">
+            Skills
+            <span className="addButton" style={skill}>Add skill</span>
+          </div>
+        <div className="skillList">
           <p className="skills">skill1</p>
-          <p className="skills">skill2</p>
+          <span className="editIcon" style={styleObj}><img src="/assets/images/edit.png"/></span>
         </div>
       </div>
     );
     }
 };
-
 class Education extends React.Component {
-    handlClick() {
-      debugger;
-    }
     render() {
     return (
       <div className="education card">
-        <div className="eduHead" onClick={this.handlClick}>Education</div>
+        <div className="eduHead">Education</div>
         <div className="edu_list">
           <div>Institution Name</div>
           <div>Passout Year</div>
@@ -71,6 +90,7 @@ class Education extends React.Component {
     );
     }
 };
+
 
 export default class ProfileWrapper extends React.Component {
   render() {
