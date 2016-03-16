@@ -3,10 +3,10 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 
 var AppActions = {
 	clickLogin:function(item){
-		AppDispatcher.handleViewAction({
-			actionType:'CLICK_ITEM',
-			item:item
-		})
+		AppDispatcher.dispatch({
+	      type: 'CLICK_ITEM',
+	      item: item
+	    });
 	}
 }
 
