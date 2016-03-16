@@ -1,5 +1,6 @@
 import React from 'react';
-
+import AppStores from '../stores/AppStores';
+import AppActions from '../actions/AppActions';
 class Login extends React.Component {
 	constructor(props, context) {
 	    super(props, context);
@@ -45,15 +46,13 @@ class Login extends React.Component {
                         <div className="form-login">
                             <h4>Login Form</h4>
                             <input type="text" id="userName"  
-                            className="form-control input-sm chat-input" placeholder="username" value={this.state.username}
+                            className="form-control input-sm chat-input setHeight" placeholder="username" value={this.state.username}
                             onChange={this.userNameChanged}/>
-                            <br></br>
-                            <input type="text" id="userPassword" className="form-control input-sm chat-input" 
+                            <input type="password" id="userPassword" className="form-control input-sm chat-input setHeight" 
                             placeholder="password" value={this.state.password} onChange={this.passwordChanged}/>
-                            <br></br>
                             <div className="wrapper">
                                 <span className="group-btn">     
-                                    <button onClick={this.getInputValue} disabled={this.buttonDisabled()} className="btn btn-primary btn-md">Login <i className="fa fa-sign-in"></i></button>
+                                    <button onClick={this.login} disabled={this.buttonDisabled()} className="btn btn-primary btn-md">Login <i className="fa fa-sign-in"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -63,8 +62,8 @@ class Login extends React.Component {
       );
    }
 
-   getInputValue() {
-    console.log('Login Clicked')
+   login() {
+    console.log('inside login action')
   }
 }
 
