@@ -25,17 +25,6 @@ class Login extends React.Component {
   		return (this.state.username === null || this.state.username === '') ||
   		 (this.state.password === null || this.state.password === '');
 	}
-	onChange() {
-		this.onChange.bind(this)	
-	}
-
-	componentDidMount() {
-	  AppStores.addChangeListener(this.onChange);
-	}
-
-	componentWillUnmount() {
-	  AppStores.removeChangeListener(this.onChange);
-	}
 
 	render() {
 
