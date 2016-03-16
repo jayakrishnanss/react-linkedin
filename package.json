@@ -33,9 +33,7 @@
         "webpack-dev-server": "^1.14.1"
     },
     "scripts": {
-        "dev": "webpack-dev-server --content-base --progress --colors",
-        "start": "NODE_ENV=production node server.js",
-        "postinstall": "webpack -p --config webpack.prod.config.js --profile --progress --colors"
+        "dev": "webpack-dev-server --content-base --progress --colors"
     },
     "repository": {
         "type": "git",
