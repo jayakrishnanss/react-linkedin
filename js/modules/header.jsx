@@ -1,7 +1,7 @@
 import React from 'react';
 import Message from './modules/message.jsx';
 
-class App extends React.Component {
+class Header extends React.Component {
    render() {
       return (
          <div>
@@ -12,4 +12,4 @@ class App extends React.Component {
    }
 }
 
-export default App;
+export default Header;
