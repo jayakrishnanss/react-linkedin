@@ -31,8 +31,52 @@ export default class ContactWrapper extends React.Component {
             <div>
                 <Contact/>
                 <AddContactButton />
+                <ContactListWrapper data={this.props.data}/>
             </div>
         )
+    }
+}
+class ContactListWrapper extends React.Component {
+    render() {
+        return (
+            <div>
+                <ContactTable data={this.props.data}/>
+            </div>
+        )
+    }
+}
+class ContactTable extends React.Component {
+    render() {
+        return(
+            <table>
+                <TableHeader />
+                <tbody>
+                    <ContactRow data={this.props.data} />
+                </tbody>
+            </table>
+        )
+    }
+}
+class TableHeader extends React.Component {
+    render() {
+        return (
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+        )
+    }
+}
+class ContactRow extends React.Component {
+    render() {
+        var createColumn = function(tableData) {
+            return (
+                <td key="tableData.id">{tableData.author}</td>
+            )
+        }
+        return <tr className="" id="commentBox">{this.props.data.map(createColumn)}</tr>;
     }
 }
 class AddContactButton extends React.Component {
