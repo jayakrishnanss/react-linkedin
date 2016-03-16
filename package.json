@@ -34,8 +34,8 @@
     },
     "scripts": {
         "dev": "webpack-dev-server --content-base --progress --colors",
-        "start": "NODE_ENV=production node server.jsx-loader",
-        "postinstall": "npm install webpack-dev-server"
+        "start": "NODE_ENV=production node server.js",
+        "postinstall": "webpack -p --config webpack.prod.config.js --profile --progress --colors"
     },
     "repository": {
         "type": "git",
