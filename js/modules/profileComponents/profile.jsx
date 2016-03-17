@@ -22,7 +22,7 @@ class AddSkill extends React.Component {
 export default class ProfileWrapper extends React.Component {
   render() {
     return(
-      <div className= "container">
+      <div className= "mainContainer">
         <Profile/>
         <Skills/>
         <Education/>
