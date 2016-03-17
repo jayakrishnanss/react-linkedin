@@ -7,6 +7,12 @@ var AppActions = {
 	      type: 'CLICK_ITEM',
 	      item: item
 	    });
+	},
+	login:function(data){
+		AppDispatcher.dispatch({
+	      type: 'CLICK_LOGIN',
+	      data: data
+	    });
 	}
 }
 
