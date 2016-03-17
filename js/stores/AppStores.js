@@ -21,14 +21,22 @@ var AppStore = assign({},EventEmitter.prototype,{
 });
 
 AppDispatcher.register(function(payload){
-	this.firebaseRef = new Firebase('https://linkedintest.firebaseio.com/');
-	this.firebaseRef.once('value',function(snapshot){
-		users = [];
-		snapshot.forEach(function(data){
-			users.push(data.val());
-		})
-		AppStore.emitLogin();
-	});
+	switch(payload.type)
+	{
+		case 'CLICK_ITEM':
+
+		this.firebaseRef = new Firebase('https://linkedintest.firebaseio.com/');
+		this.firebaseRef.once('value',function(snapshot){
+			users = [];
+			snapshot.forEach(function(data){
+				users.push(data.val());
+			})
+			AppStore.emitLogin();
+		});
+
+		break;
+	}
+	
 	return true;
 });
 
