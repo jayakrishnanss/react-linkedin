@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App.jsx';
-// import LoginPage from './modules/login.js';
+import Home from './js/modules/HomePage.jsx';
 
-ReactDOM.render(<App />, document.getElementById('app'))
-// ReactDOM.render(<LoginPage />, document.getElementById('app'))
+ReactDOM.render(<Home />, document.getElementById('app'))

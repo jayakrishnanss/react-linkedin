@@ -2,6 +2,7 @@ import React from 'react';
 import AppActions from './js/actions/AppActions';
 import AppStores from './js/stores/AppStores';
 
+
 var users = ['000000','no name'];
 class App extends React.Component {
 	constructor(props, context) {
