@@ -7,6 +7,18 @@ var AppActions = {
 	      type: 'CLICK_ITEM',
 	      item: item
 	    });
+	},
+	addContactClick : function(item){
+		AppDispatcher.dispatch({
+			type: 'ADD_CONTACT',
+			item: item
+	    });
+	},
+	getUsers : function(item){
+		AppDispatcher.dispatch({
+			type: 'GET_USERS',
+			item: item
+	    });
 	}
 }
 

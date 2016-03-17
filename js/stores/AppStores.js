@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import {EventEmitter} from 'events';
-import assign from 'object-assign'; 
+import assign from 'object-assign';
 
 var CHANGE_EVENT = 'change';
 var users = [];
@@ -24,19 +24,16 @@ AppDispatcher.register(function(payload){
 	switch(payload.type)
 	{
 		case 'CLICK_ITEM':
-
-		this.firebaseRef = new Firebase('https://linkedintest.firebaseio.com/');
-		this.firebaseRef.once('value',function(snapshot){
-			users = [];
-			snapshot.forEach(function(data){
-				users.push(data.val());
-			})
-			AppStore.emitLogin();
-		});
-
-		break;
+			this.firebaseRef = new Firebase('https://linkedintest.firebaseio.com/');
+			this.firebaseRef.once('value',function(snapshot){
+				users = [];
+				snapshot.forEach(function(data){
+					users.push(data.val());
+				})
+				AppStore.emitLogin();
+			});
+			break;
 	}
-	
 	return true;
 });
 

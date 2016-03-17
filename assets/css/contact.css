@@ -66,3 +66,19 @@
 .cancel_button:hover {
     background: #0f68a2;
 }
+.user_table {
+
+}
+.user_table tr, .user_table thead {
+    padding: 5px 10px;
+    margin-left: 20px;
+}
+.user_table thead  {
+    border-bottom: 1px solid grey;
+}
+.user_table thead th {
+    text-align: center;
+}
+.user_table tr td, .user_table thead th {
+    padding: 5px 10px;
+}
