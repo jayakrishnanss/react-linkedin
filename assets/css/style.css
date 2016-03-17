@@ -34,14 +34,12 @@ body {
   text-align: right;
   font-size: 14px;
   display: none;
-  padding: 5px;
-}
-.addButton:hover {
-  background-color: #2196F3;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 .skills, .edu_list {
   font-size: 14px;
-  margin-left: 10px;
+  margin: 20px 0px 10px 0px;
 }
 .skillList {
   position: relative;
@@ -80,4 +78,7 @@ body {
   position: absolute;
   bottom: 4px;
   text-align: center;
+}
+.skillAdd {
+  display: none;
 }

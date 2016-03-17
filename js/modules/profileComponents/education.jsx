@@ -26,7 +26,7 @@ export default class Education extends React.Component {
       <div className="education card" onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
         <div className="eduHead">
           Education
-          <span className="addButton" style={styleObj}>Add education</span>
+          <button className="addButton" style={styleObj}>Add education</button>
         </div>
         <div className="edu_list">
           <div>Institution Name</div>
