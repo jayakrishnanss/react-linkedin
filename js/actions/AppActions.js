@@ -14,6 +14,12 @@ var AppActions = {
 			item: item
 	    });
 	},
+	deleteContactClick : function(item){
+		AppDispatcher.dispatch({
+			type: 'DELETE_CONTACT',
+			item: item
+	    });
+	},
 	getUsers : function(item){
 		AppDispatcher.dispatch({
 			type: 'GET_USERS',

@@ -4,6 +4,8 @@ import AppActions from '../actions/AppActions';
 import ContactStore from '../stores/contactStore'
 import $ from "jquery";
 
+var NoContacts = 0;
+
 class Contact extends React.Component{
 
     hidePopup() {
@@ -12,7 +14,7 @@ class Contact extends React.Component{
     addContact() {
         var name = $('#name').val(),
             email = $('#email').val();
-        var obj = {'name': name, 'email': email}
+        var obj = {'id': NoContacts, 'name': name, 'email': email}
         AppActions.addContactClick(obj);
     }
     render() {
@@ -61,13 +63,15 @@ class ContactTable extends React.Component {
     constructor(props, context) {
 	    super(props, context);
 	    this.onChange = this.onChange.bind(this);
-        this.state = {contacts: [{'name': 'No name', 'email': 'no email'}, {'name': 'No name', 'email': 'no email'}]};
+        this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
 	}
     onChange() {
         var users = [];
 		this.onChange.bind(this);
         users = ContactStore.getUser();
         this.setState({contacts: users});
+        NoContacts = users.length+1;
+        console.log(NoContacts);
 	}
     componentDidMount() {
 	  ContactStore.addChangeListener(this.onChange);
@@ -101,22 +105,25 @@ class ContactRow extends React.Component {
     editContact() {
         console.log('Edit');
     }
-    deleteContact() {
+    deleteContact(i) {
+        AppActions.deleteContactClick(this.props.users[i].name);
         console.log('deleted');
     }
     render() {
-        var userList = this.props.users.map(function(user) {
+        var userList = this.props.users.map(function(user, i) {
             return (
-                <tr>
+                <tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
-                        Edit
+                        <button onClick={this.editContact.bind(this)}>Edit</button>
                     </td>
-                    <td>Delete</td>
+                    <td>
+                        <button onClick={this.deleteContact.bind(this, i)}>Delete</button>
+                    </td>
                 </tr>
             );
-        });
+        }.bind(this));
         return(
             <tbody>
                 {userList}

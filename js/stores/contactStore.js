@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import AppActions from '../actions/AppActions';
 import {EventEmitter} from 'events';
 import assign from 'object-assign';
 
@@ -24,12 +25,28 @@ AppDispatcher.register(function(payload){
 	switch(payload.type)
 	{
     	case 'ADD_CONTACT':
-    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com');
-            firebaseRef.push({text:'test'});
+    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
+            firebaseRef.push(payload.item);
+            AppActions.getUsers('get_users');
             break;
+
+        case 'DELETE_CONTACT':
+    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
+            firebaseRef.on('value',function(snapshot){
+    			snapshot.forEach(function(data){
+                    var user = data.val();
+    				if (user.name == payload.item) {
+                        firebaseRef.child(data.name()).remove();
+                        debugger;
+    				}
+    			})
+                AppActions.getUsers('get_users');
+    		});
+            break;
+
         case 'GET_USERS':
-    		this.firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
-    		this.firebaseRef.once('value',function(snapshot){
+    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
+    		firebaseRef.on('value',function(snapshot){
     			users = [];
     			snapshot.forEach(function(data){
     				users.push(data.val());
