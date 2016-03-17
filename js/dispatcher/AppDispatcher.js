@@ -1,4 +1,4 @@
-ssssimport { Dispatcher } from 'flux';
+import { Dispatcher } from 'flux';
 import assign from 'object-assign'; 
 
 var AppDispatcher = assign(new Dispatcher(),{

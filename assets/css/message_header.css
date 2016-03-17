@@ -1,17 +1,15 @@
 .message_container{
-	float: right;
-	margin-right: 30px;
-	width: 200px;
-	height: 100px;
 }
 
 .message_icon{
-	text-align: center;
+	float:right;
+	margin-right: 300px;
 }
 
 .message_body{
+	position: relative;
 	color:red;
-	width: 100%;
+	width: 200px;
 	background: black;
 	min-height: 100px;	
 }

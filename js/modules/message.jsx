@@ -1,50 +1,54 @@
 import React from 'react'
-import MessageBody from './messageBody.jsx'
-import MessageStore from '.js/stores/MessageStore'
+import MessageStore from '../stores/MessageStore.js'
+import AppActions from '../actions/AppActions'
+
+var messages = []
 
 class Message extends React.Component {
 
 	constructor(props){
 		super(props)
-		this.state = {hover:false, timer:1000}
+		this.state = {hover:false}
 	}
 
    onHover(){
-      this.onHover.bind(this)
       messages = MessageStore.getMessages()
    }
 
    componentDidMount() {
-     MessageStore.addChangeListener(this.onHover)
+     MessageStore.addHoverListener(this.onHover)
    }
 
    componentWillUnmount() {
-     MessageStore.removeChangeListener(this.onHover)
+     MessageStore.removeHoverListener(this.onHover)
    }
 
 	show(){
-		// this.setState({hover: true, timer:null})
+      AppActions.hover()
+		this.setState({hover: true})
 	}
 
 	hide(){
-		// this.setState({hover: false, timer:1000})
+      setTimeout(function(){
+         this.setState({hover: false})
+      }.bind(this),1000)
 	}
 
-   	render() {
+   render() {
       var messageBody
       if(this.state.hover)
-      	messageBody = <MessageBody />
+      	messageBody = <div className="message_body" onMouseEnter={this.show.bind(this)} onMouseLeave={this.hide.bind(this)}><div>{messages}</div></div>
       else
-      	messageBody = "" 
+         messageBody = null
       return (
          <div className="message_container">
-         	<div className="message_icon">
+         	<div className="message_icon" onMouseEnter={this.show.bind(this)} onMouseLeave={this.hide.bind(this)}>
             	<i className="fa fa-envelope"></i>
             </div>
            	{messageBody}
          </div>
       	);
-   	}
+   }
 }
 
 export default Message;

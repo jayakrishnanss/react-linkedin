@@ -13,6 +13,11 @@ var AppActions = {
 	      type: 'CLICK_LOGIN',
 	      data: data
 	    });
+	},
+	hover:function(){
+		AppDispatcher.dispatch({
+			type: 'ON_HOVER'			
+		})
 	}
 }
 
