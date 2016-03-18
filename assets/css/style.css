@@ -1,7 +1,7 @@
 
 
 body {
-  background-color:#fff;
+  background-color: #f0f0f0;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto,arial,sans-serif;
 }
@@ -23,8 +23,8 @@ body {
     box-shadow:0 1px 0 #cfcfcf;
 }
 
-h4 { 
- border:0 solid #fff; 
+h4 {
+ border:0 solid #fff;
  border-bottom-width:1px;
  padding-bottom:10px;
  text-align: center;

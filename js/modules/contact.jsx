@@ -70,7 +70,7 @@ class ContactTable extends React.Component {
 		this.onChange.bind(this);
         users = ContactStore.getUser();
         this.setState({contacts: users});
-        NoContacts = users.length+1;
+        NoContacts = (users[users.length-1].id) + 1;
         console.log(NoContacts);
 	}
     componentDidMount() {
@@ -82,26 +82,13 @@ class ContactTable extends React.Component {
 	}
     render() {
         return(
-            <table className="user_table">
-                <TableHeader />
-                <ContactRow users={this.state.contacts} />
-            </table>
+            <div className="user_list_wrapper">
+                <ContactElement users={this.state.contacts} />
+            </div>
         )
     }
 }
-class TableHeader extends React.Component {
-    render() {
-        return (
-            <thead>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </thead>
-        )
-    }
-}
-class ContactRow extends React.Component {
+class ContactElement extends React.Component {
     editContact() {
         console.log('Edit');
     }
@@ -112,34 +99,38 @@ class ContactRow extends React.Component {
     render() {
         var userList = this.props.users.map(function(user, i) {
             return (
-                <tr key={user.id}>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>
-                        <button onClick={this.editContact.bind(this)}>Edit</button>
-                    </td>
-                    <td>
-                        <button onClick={this.deleteContact.bind(this, i)}>Delete</button>
-                    </td>
-                </tr>
+                <li key={user.id}>
+                    <div className="user_wrapper">
+                        <span className="icon_edit icon_user" onClick={this.editContact.bind(this)} title="Edit this contact">
+                            <i className="fa fa-pencil-square-o fa-2x"></i>
+                        </span>
+                        <div className="user_details">
+                            <div className="user_name">{user.name}</div>
+                            <div>{user.email}</div>
+                            <div className="css_div"></div>
+                        </div>
+                        <span className="icon_delete icon_user" onClick={this.deleteContact.bind(this, i)} title="Delete this contact">
+                            <i className="fa fa-times fa-2x"></i>
+                        </span>
+                    </div>
+                </li>
             );
         }.bind(this));
         return(
-            <tbody>
+            <ul className="user_list">
                 {userList}
-            </tbody>
+            </ul>
         )
     }
 }
 class AddContactButton extends React.Component {
     showPopup (eve){
         $('.add_form_wrapper').show();
-
     }
     render(){
         return(
-            <div>
-                <button className="add-contact" onClick={this.showPopup}>Add New</button>
+            <div className="add-contact">
+                <button onClick={this.showPopup}>Add New</button>
             </div>
         )
     }

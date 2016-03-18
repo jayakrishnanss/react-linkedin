@@ -1,3 +1,6 @@
+body {
+    background-color: #d0d0d0;
+}
 .add_form_wrapper {
     background-color: rgba(220, 220, 220, 0.8);
     position: fixed;;
@@ -6,6 +9,7 @@
     top: 0;
     bottom: 0;
     left: 0;
+    z-index: 2;
     display: none;
     right: 0;
 }
@@ -15,7 +19,7 @@
     padding: 2%;
     left: 50%;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 1px rgba(99,94,99,1);
+    box-shadow: 0px 0px 10px 1px rgba(200,94,99,1);
     background: white;
     width: 40%;
     transform: translate(-50%, -50%);
@@ -66,19 +70,68 @@
 .cancel_button:hover {
     background: #0f68a2;
 }
-.user_table {
-
+.user_list li{
+    background-image: url("../images/user.jpg");
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    box-shadow: 1px 1px 20px 1px rgba(163,163,163,0.5);
+    list-style-type: none;
+    height: 300px;
+    width: 20%;
+    margin: 20px;
+    border: 1px solid rgba(125, 125, 125, 0.4);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s linear;
 }
-.user_table tr, .user_table thead {
-    padding: 5px 10px;
-    margin-left: 20px;
+.user_list li:hover{
+    box-shadow: 1px 1px 30px 3px rgba(163,163,163,1);
 }
-.user_table thead  {
-    border-bottom: 1px solid grey;
-}
-.user_table thead th {
+.user_wrapper {
     text-align: center;
+    position: relative;
+    top: 80%;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    transition: all 0.3s linear;
 }
-.user_table tr td, .user_table thead th {
-    padding: 5px 10px;
+.user_wrapper:hover {
+    background-color: rgba(0, 160, 220, 0.8);
+}
+.user_details .user_name {
+    font-weight: bold;
+}
+.user_wrapper .icon_user {
+    width: 14%;
+    display: inline-block;
+    transition: all 0.3s linear;
+}
+.user_wrapper .icon_user:hover {
+    color: red;
+}
+.user_wrapper .user_details {
+    display: inline-block;
+    width: 70%;
+}
+.add-contact {
+    height: 50px;
+    padding-right: 2%;
+}
+.add-contact button {
+    background: linear-gradient(to bottom, rgba(105,183,255,1) 0%, rgba(84,161,242,1) 100%);
+    color: white;
+    border: 1px solid rgba(163,163,163,1);
+    box-shadow: 1px 1px 10px 1px rgba(163,163,163,1);
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s linear;
+    float: right;
+    right: 10%;
+}
+.add-contact button:hover {
+    border: 1px solid rgba(0, 160, 220, 1);
+    background: linear-gradient(to bottom, rgba(65,164,250,1) 0%, rgba(33,126,219,1) 100%);
 }

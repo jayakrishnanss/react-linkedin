@@ -37,7 +37,6 @@ AppDispatcher.register(function(payload){
                     var user = data.val();
     				if (user.name == payload.item) {
                         firebaseRef.child(data.name()).remove();
-                        debugger;
     				}
     			})
                 AppActions.getUsers('get_users');
