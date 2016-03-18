@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import AddSKill from '../profileComponents/addSkills.jsx'
+import ShowSkill from '../profileComponents/showSkill.jsx'
 
 export default class Skills extends React.Component {
     constructor(props) {
@@ -42,6 +43,9 @@ export default class Skills extends React.Component {
           </div>
         <div className="skillAdd" style={add}>
           <AddSKill/>
+        </div>
+        <div className="skillList">
+          <ShowSkill/>
         </div>
       </div>
     );

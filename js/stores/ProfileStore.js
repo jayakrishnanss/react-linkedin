@@ -27,8 +27,14 @@ AppDispatcher.register(function(payload){
       })
 			ProfileStore.emitProfile();
 		});
-
 		break;
+
+    case 'INSERT_SKILL':
+    this.firebaseRef = new Firebase('https://profileforlinkedin.firebaseio.com');
+    var ref = this.firebaseRef.child('0');
+    ref.update({
+      skills: payload.skill
+    });
 	}
 
 	return true;

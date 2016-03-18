@@ -16,8 +16,15 @@ var AppActions = {
 	},
 	fetchProfile: function(user) {
 		AppDispatcher.dispatch({
-			type: 'FETCH_PROFILE', 
+			type: 'FETCH_PROFILE',
 			user: user
+		})
+	},
+	insertSkills: function (skill) {
+		debugger;
+		AppDispatcher.dispatch({
+			type: 'INSERT_SKILL',
+			skill: skill
 		})
 	}
 }

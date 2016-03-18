@@ -6,6 +6,4 @@ import Home from './js/modules/HomePage.jsx';
 
 ReactDOM.render(<ProfileWrapper />, document.getElementById('profile'))
 
-
-
 ReactDOM.render(<Home />, document.getElementById('app'))

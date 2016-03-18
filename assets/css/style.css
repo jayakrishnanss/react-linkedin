@@ -1,4 +1,4 @@
-body {
+  body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   font: normal 14px Roboto, arial, sans-serif;
@@ -163,8 +163,9 @@ li a {
   background-color: #959090;
   display: none;
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   text-align: center;
+  border-radius: 0px 0px 10px 10px;
 }
 .skillAdd {
   display: none;
