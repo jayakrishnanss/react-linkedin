@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../modules/Header.jsx';
-import MessageArea from '../modules/MessageArea.jsx'
+import ShowMessageArea from '../modules/ShowMessageArea.jsx'
 class HomePage extends React.Component {
 
 	render() {
@@ -10,7 +10,7 @@ class HomePage extends React.Component {
       	
 	      	<div>
 	      		<Header/>
-	      		<MessageArea/>
+	      		<ShowMessageArea/>
 	      	</div>
       );
    }

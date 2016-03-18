@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import AppActions from '../actions/AppActions';
+import PostMessageStore from '../stores/PostMessageStores';
 
 var message;
 class messageArea extends React.Component {
 	constructor(props, context) {
 	    super(props, context);
-	    //this.onChange = this.onChange.bind(this);
-	    this.state = {title: null, message: null};
+	    this.onChange = this.onChange.bind(this);
+	    this.state = {title: null, message: null, successMessage: null};
 	    this.titleChanged = this.titleChanged.bind(this);
     	this.messageChanged = this.messageChanged.bind(this);
 	}
@@ -26,6 +27,17 @@ class messageArea extends React.Component {
 	buttonDisabled() {
   		return (this.state.message === null || this.state.message === '');
 	}
+	onChange() {
+		this.setState({title: null, message: null, successMessage: 'Message saved successfully'})
+        this.onChange.bind(this);
+    }
+	componentDidMount() {
+      PostMessageStore.addChangeListener(this.onChange);
+    }
+
+    componentWillUnmount() {
+      PostMessageStore.removeChangeListener(this.onChange);
+    }
 	render() {
 		message = {
 				message : this.state.message,
@@ -33,6 +45,7 @@ class messageArea extends React.Component {
 		};												
 		return (
 				<div className="container">
+					<h5 className="success">{this.state.successMessage}</h5>
 				    <div className="row">
 						<div className="col-sm-8 col-md-8">
 				            <div className="panel panel-default">
@@ -41,7 +54,7 @@ class messageArea extends React.Component {
 				                    	value={this.state.title} onChange={this.titleChanged}/>
 				                        <textarea className="form-control counted messageArea" name="message" placeholder="Type in your message" 
 				                        value={this.state.message} onChange={this.messageChanged} rows="5" ></textarea>
-				                        <button onClick={this.postMessage.bind(this,message)}className="btn btn-info" disabled= {this.buttonDisabled()}>Post New Message</button>
+				                        <button onClick={this.postMessage.bind(this,message)} className="btn btn-info" disabled= {this.buttonDisabled()}>Post New Message</button>
 				                </div>
 				        	</div>
 				    	</div>
@@ -50,8 +63,6 @@ class messageArea extends React.Component {
 		);
    }
    postMessage(data){
-   	console.log(data);
-	console.log('inside post message method');
 	AppActions.postMessage(data);
    }
 }
