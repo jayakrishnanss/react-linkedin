@@ -13,6 +13,12 @@ var AppActions = {
 	      type: 'CLICK_LOGIN',
 	      data: data
 	    });
+	},
+	postMessage:function(data){
+		AppDispatcher.dispatch({
+	      type: 'POST_MESSAGE',
+	      data: data
+	    });
 	}
 }
 
