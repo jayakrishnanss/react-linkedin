@@ -28,7 +28,7 @@ class messageArea extends React.Component {
   		return (this.state.message === null || this.state.message === '');
 	}
 	onChange() {
-		this.setState({title: null, message: null, successMessage: 'Message saved successfully'})
+		this.setState({title: null, message: '', successMessage: 'Message saved successfully'})
         this.onChange.bind(this);
     }
 	componentDidMount() {
