@@ -23,31 +23,39 @@ class Message extends React.Component {
      MessageStore.removeHoverListener(this.onHover)
    }
 
+  showBody(){
+    this.setState({hoverBody: true})
+  }
+
+  hideBody(){
+    this.setState({hoverBody: false})
+  }
+
 	show(){
-      AppActions.hover()
+    AppActions.hover()
 		this.setState({hover: true})
 	}
 
 	hide(){
       setTimeout(function(){
-         this.setState({hover: false})
-      }.bind(this),1000)
+        this.setState({hover: false})
+      }.bind(this),500)
 	}
 
    render() {
       var messageBody
-      if(this.state.hover)
-      	messageBody = <div className="message_body" onMouseEnter={this.show.bind(this)} onMouseLeave={this.hide.bind(this)}><div>{messages}</div></div>
+      if(this.state.hover||this.state.hoverBody)
+      	messageBody = <div className="message_body" onMouseEnter={this.showBody.bind(this)} onMouseLeave={this.hideBody.bind(this)}><div>{messages}</div></div>
       else
-         messageBody = null
+        messageBody = null
       return (
          <div className="message_container">
          	<div className="message_icon" onMouseEnter={this.show.bind(this)} onMouseLeave={this.hide.bind(this)}>
             	<i className="fa fa-envelope"></i>
-            </div>
+          </div>
            	{messageBody}
          </div>
-      	);
+      );
    }
 }
 
