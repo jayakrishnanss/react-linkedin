@@ -6,52 +6,11 @@ import $ from "jquery";
 
 var NoContacts = 0;
 
-class Contact extends React.Component{
-
-    hidePopup() {
-        $('.add_form_wrapper').hide();
-    }
-    addContact() {
-        var name = $('#name').val(),
-            email = $('#email').val();
-        var obj = {'id': NoContacts, 'name': name, 'email': email}
-        AppActions.addContactClick(obj);
-        $('.add_form_wrapper').hide();
-    }
-    updateUser() {
-        var name = $('#name').val(),
-            email = $('#email').val();
-        var obj = {'id': NoContacts, 'name': name, 'email': email}
-        AppActions.updateContact(obj);
-        $('.add_form_wrapper').hide();
-    }
-    render() {
-        return(
-            <div className="add_form_wrapper">
-                <form className="add_form" onSubmit={this.addContact}>
-                    <div className="content_wrapper">
-                        <label>Name : </label>
-                        <input type="text" id="name" placeholder="Name"/>
-                    </div>
-                    <div className="content_wrapper">
-                        <label>Email : </label>
-                        <input type="text" id="email" placeholder="Email"/>
-                    </div>
-                    <input className="button submit_button" type="submit" name="submit_button" value="Submit"/>
-                    <input className="button update_button" type="button" value="Update" onClick={this.updateUser}/>
-                    <input className="button cancel_button" type="button" name="cancel_button" onClick={this.hidePopup} value="Cancel"/>
-
-                </form>
-            </div>
-        )
-    }
-}
 export default class ContactWrapper extends React.Component {
     render(){
         return(
             <div>
-                <Contact/>
-                <ListContacts />
+                <ContactForm/>
                 <AddContactButton />
                 <ContactListWrapper/>
             </div>
@@ -151,13 +110,44 @@ class AddContactButton extends React.Component {
         )
     }
 }
-class ListContacts extends React.Component {
-    getContacts() {
-        AppActions.getUsers('get_users');
+
+class ContactForm extends React.Component{
+
+    hidePopup() {
+        $('.add_form_wrapper').hide();
+    }
+    addContact() {
+        var name = $('#name').val(),
+            email = $('#email').val();
+        var obj = {'id': NoContacts, 'name': name, 'email': email}
+        AppActions.addContactClick(obj);
+        $('.add_form_wrapper').hide();
+    }
+    updateUser() {
+        var name = $('#name').val(),
+            email = $('#email').val();
+        var obj = {'id': NoContacts, 'name': name, 'email': email}
+        AppActions.updateContact(obj);
+        $('.add_form_wrapper').hide();
     }
     render() {
-        return (
-            <button onClick={this.getContacts}>List Contacts</button>
+        return(
+            <div className="add_form_wrapper">
+                <form className="add_form" onSubmit={this.addContact}>
+                    <div className="content_wrapper">
+                        <label>Name : </label>
+                        <input type="text" id="name" placeholder="Name"/>
+                    </div>
+                    <div className="content_wrapper">
+                        <label>Email : </label>
+                        <input type="text" id="email" placeholder="Email"/>
+                    </div>
+                    <input className="button submit_button" type="submit" name="submit_button" value="Submit"/>
+                    <input className="button update_button" type="button" value="Update" onClick={this.updateUser}/>
+                    <input className="button cancel_button" type="button" name="cancel_button" onClick={this.hidePopup} value="Cancel"/>
+
+                </form>
+            </div>
         )
     }
 }

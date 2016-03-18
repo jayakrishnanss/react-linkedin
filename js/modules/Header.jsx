@@ -1,4 +1,5 @@
 import React from 'react';
+import AppActions from '../actions/AppActions';
 import HeaderActions from '../actions/HeaderMenuActions';
 
 class Header extends React.Component {
@@ -12,7 +13,10 @@ class Header extends React.Component {
 	onClickMenu(e) {
 		HeaderActions.clickHeaderMenu(e.target.innerHTML);
 	}
-   	render() {
+	populateContacts() {
+		AppActions.getUsers('get_users');
+	}
+	render() {
       return (
         <div >
         	<div id="header">
@@ -20,7 +24,7 @@ class Header extends React.Component {
 	                <i className="fa fa-linkedin-square fa-2x"></i>
 	            </a>
 	            <div id="noti_Container" className="contact_icon">
-				    <i className="fa fa-user-plus fa-2x"></i>
+				    <i className="fa fa-user-plus fa-2x" onClick={this.populateContacts}></i>
 				    <div className="noti_bubble">3</div>
 				</div>
 	            <div id="noti_Container">
