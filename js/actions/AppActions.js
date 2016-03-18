@@ -1,5 +1,4 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-//import AppContants from '../constants/AppContants';
 
 var AppActions = {
 	clickLogin:function(item){
@@ -24,6 +23,10 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			type: 'GET_USERS',
 			item: item
+	login:function(data){
+		AppDispatcher.dispatch({
+	      type: 'CLICK_LOGIN',
+	      data: data
 	    });
 	}
 }
