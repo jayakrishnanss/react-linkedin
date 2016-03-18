@@ -1,5 +1,4 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-//import AppContants from '../constants/AppContants';
 
 var AppActions = {
 	clickLogin:function(item){

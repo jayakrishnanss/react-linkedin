@@ -1,4 +1,5 @@
 import React from 'react';
+import HeaderActions from '../actions/HeaderMenuActions';
 
 class Header extends React.Component {
 	constructor(props, context) {
@@ -7,6 +8,9 @@ class Header extends React.Component {
 	}
 	onChange() {
 		this.onChange.bind(this);
+	}
+	onClickMenu(e) {
+		HeaderActions.clickHeaderMenu(e.target.innerHTML);
 	}
    	render() {
       return (
@@ -27,9 +31,9 @@ class Header extends React.Component {
             </div>
             <div id="header-sub">
             	<ul>
-				  <li><a className="active" href="#">Home</a></li>
-				  <li><a href="#">Dashboard</a></li>
-				  <li><a href="#">Profile</a></li>
+				  <li onClick={this.onClickMenu}><a className="active" href="#">Home</a></li>
+				  <li onClick={this.onClickMenu}><a href="#">Dashboard</a></li>
+				  <li onClick={this.onClickMenu}><a href="#">Profile</a></li>
 				</ul>
             </div>
         </div>
