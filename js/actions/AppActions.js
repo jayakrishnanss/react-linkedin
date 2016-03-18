@@ -13,6 +13,12 @@ var AppActions = {
 	      type: 'CLICK_LOGIN',
 	      data: data
 	    });
+	},
+	fetchProfile: function(user) {
+		AppDispatcher.dispatch({
+			type: 'FETCH_PROFILE', 
+			user: user
+		})
 	}
 }
 

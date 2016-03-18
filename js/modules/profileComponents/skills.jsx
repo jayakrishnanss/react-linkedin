@@ -43,10 +43,6 @@ export default class Skills extends React.Component {
         <div className="skillAdd" style={add}>
           <AddSKill/>
         </div>
-        <div className="skillList">
-          <p className="skills">skill1</p>
-          <span className="editIcon editSkill" style={styleObj}><img src="/assets/images/edit.png"/></span>
-        </div>
       </div>
     );
     }
