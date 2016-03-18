@@ -19,10 +19,18 @@ var AppActions = {
 			item: item
 	    });
 	},
+	updateContact : function(item){
+		AppDispatcher.dispatch({
+			type: 'UPDATE_CONTACT',
+			item: item
+	    });
+	},
 	getUsers : function(item){
 		AppDispatcher.dispatch({
 			type: 'GET_USERS',
 			item: item
+		});
+	},
 	login:function(data){
 		AppDispatcher.dispatch({
 	      type: 'CLICK_LOGIN',

@@ -16,6 +16,14 @@ class Contact extends React.Component{
             email = $('#email').val();
         var obj = {'id': NoContacts, 'name': name, 'email': email}
         AppActions.addContactClick(obj);
+        $('.add_form_wrapper').hide();
+    }
+    updateUser() {
+        var name = $('#name').val(),
+            email = $('#email').val();
+        var obj = {'id': NoContacts, 'name': name, 'email': email}
+        AppActions.updateContact(obj);
+        $('.add_form_wrapper').hide();
     }
     render() {
         return(
@@ -30,7 +38,9 @@ class Contact extends React.Component{
                         <input type="text" id="email" placeholder="Email"/>
                     </div>
                     <input className="button submit_button" type="submit" name="submit_button" value="Submit"/>
+                    <input className="button update_button" type="button" value="Update" onClick={this.updateUser}/>
                     <input className="button cancel_button" type="button" name="cancel_button" onClick={this.hidePopup} value="Cancel"/>
+
                 </form>
             </div>
         )
@@ -91,7 +101,11 @@ class ContactTable extends React.Component {
 class ContactElement extends React.Component {
     editContact(i) {
         $('.add_form_wrapper').show();
-        debugger;
+        $('.update_button').show();
+        $('.submit_button').hide();
+        $('#name').val(this.props.users[i].name);
+        $('#email').val(this.props.users[i].email);
+        NoContacts = this.props.users[i].id;
     }
     deleteContact(i) {
         AppActions.deleteContactClick(this.props.users[i].name);
@@ -126,6 +140,8 @@ class ContactElement extends React.Component {
 class AddContactButton extends React.Component {
     showPopup (eve){
         $('.add_form_wrapper').show();
+        $('.update_button').hide();
+        $('.submit_button').show();
     }
     render(){
         return(

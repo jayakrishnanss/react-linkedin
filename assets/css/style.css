@@ -78,6 +78,14 @@ li a {
     width:36px;
     height:36px;
     cursor: pointer;
+    margin-top: 5px;
+}
+.contact_icon {
+    transition: all 0.3s linear;
+    color: white;
+}
+.contact_icon:hover {
+    color: rgba(0, 160, 220, 1);
 }
 .noti_bubble {
     position:absolute;    /* This breaks the div from the normal HTML document. */
@@ -95,4 +103,6 @@ li a {
 }
 #linkedin_logo {
     float: left;
+    margin-top: 5px;
+    color: white;
 }

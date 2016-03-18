@@ -30,6 +30,20 @@ AppDispatcher.register(function(payload){
             AppActions.getUsers('get_users');
             break;
 
+        case 'UPDATE_CONTACT':
+            var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
+            firebaseRef.on('value',function(snapshot){
+                snapshot.forEach(function(data){
+                    var user = data.val();
+                    debugger;
+                    if (user.id == payload.item.id) {
+                        firebaseRef.child(data.name()).update(payload.item);
+                    }
+                })
+                AppActions.getUsers('get_users');
+            });
+            break;
+
         case 'DELETE_CONTACT':
     		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             firebaseRef.on('value',function(snapshot){

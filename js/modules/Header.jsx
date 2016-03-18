@@ -17,17 +17,16 @@ class Header extends React.Component {
         <div >
         	<div id="header">
 	            <a id="linkedin_logo" href="/">
-	                <img src="/assets/images/Linkedin-icon.png" 
-	                alt="LinkedIn logo" width="36" height="36" />
+	                <i className="fa fa-linkedin-square fa-2x"></i>
 	            </a>
-	            <div id="noti_Container">
-				    <img width="36" height="36" src="/assets/images/contacts_icon.png" alt="message" />
+	            <div id="noti_Container" className="contact_icon">
+				    <i className="fa fa-user-plus fa-2x"></i>
 				    <div className="noti_bubble">3</div>
 				</div>
 	            <div id="noti_Container">
-				    <img width="36" height="36" src="/assets/images/message_icon.png" alt="message" />
+				    <i className="fa fa-whatsapp fa-2x"></i>
 				    <div className="noti_bubble">2</div>
-				</div>	
+				</div>
             </div>
             <div id="header-sub">
             	<ul>
