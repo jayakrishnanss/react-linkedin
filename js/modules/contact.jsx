@@ -89,19 +89,19 @@ class ContactTable extends React.Component {
     }
 }
 class ContactElement extends React.Component {
-    editContact() {
-        console.log('Edit');
+    editContact(i) {
+        $('.add_form_wrapper').show();
+        debugger;
     }
     deleteContact(i) {
         AppActions.deleteContactClick(this.props.users[i].name);
-        console.log('deleted');
     }
     render() {
         var userList = this.props.users.map(function(user, i) {
             return (
                 <li key={user.id}>
                     <div className="user_wrapper">
-                        <span className="icon_edit icon_user" onClick={this.editContact.bind(this)} title="Edit this contact">
+                        <span className="icon_edit icon_user" onClick={this.editContact.bind(this, i)} title="Edit this contact">
                             <i className="fa fa-pencil-square-o fa-2x"></i>
                         </span>
                         <div className="user_details">
