@@ -31,6 +31,12 @@ var AppActions = {
 			item: item
 		});
 	},
+	getNewUsers : function(item){
+		AppDispatcher.dispatch({
+			type: 'GET_NEW_USERS',
+			item: item
+		});
+	},
 	login:function(data){
 		AppDispatcher.dispatch({
 	      type: 'CLICK_LOGIN',

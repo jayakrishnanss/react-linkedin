@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppActions from '../actions/AppActions';
-import ContactStore from '../stores/contactStore'
+import ContactStore from '../stores/contactStore';
 import $ from "jquery";
 
 var NoContacts = 0;
@@ -22,7 +22,7 @@ class ContactListWrapper extends React.Component {
     render() {
         return (
             <div>
-                <ContactTable onInit={this.getContacts} />
+                <ContactTable />
             </div>
         )
     }
@@ -39,7 +39,9 @@ class ContactTable extends React.Component {
 		this.onChange.bind(this);
         users = ContactStore.getUser();
         this.setState({contacts: users});
-        NoContacts = (users[users.length-1].id) + 1;
+        if (users.length != 0) {
+            NoContacts = (users[users.length-1].id) + 1;
+        }
         console.log(NoContacts);
 	}
     componentDidMount() {
@@ -80,7 +82,6 @@ class ContactElement extends React.Component {
                         <div className="user_details">
                             <div className="user_name">{user.name}</div>
                             <div>{user.email}</div>
-                            <div className="css_div"></div>
                         </div>
                         <span className="icon_delete icon_user" onClick={this.deleteContact.bind(this, i)} title="Delete this contact">
                             <i className="fa fa-times fa-2x"></i>

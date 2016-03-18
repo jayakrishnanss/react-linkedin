@@ -4,7 +4,8 @@ import {EventEmitter} from 'events';
 import assign from 'object-assign';
 
 var CHANGE_EVENT = 'change';
-var users = [];
+var users = [],
+    newUsers = [];
 
 var ContactStore = assign({},EventEmitter.prototype,{
     emitAddContact:function(){
@@ -18,6 +19,9 @@ var ContactStore = assign({},EventEmitter.prototype,{
    },
    getUser:function(){
        return users;
+   },
+   getNewUser:function(){
+       return newUsers;
    }
 });
 
@@ -66,6 +70,17 @@ AppDispatcher.register(function(payload){
     			})
     			ContactStore.emitAddContact(users);
     		});
+            break;
+        case 'GET_NEW_USERS':
+            var first = true;
+    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
+            newUsers = [];
+            for (var i = 1; i <= 3; i++) {
+                firebaseRef.limitToLast(i).on("child_added", function(snap) {
+                    newUsers.push(snap.val());
+                });
+            ContactStore.emitAddContact(newUsers);
+            }
             break;
 	}
 

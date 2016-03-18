@@ -87,6 +87,9 @@ li a {
 .contact_icon:hover {
     color: rgba(0, 160, 220, 1);
 }
+.contact_icon:hover .contact_ul_wrapper ul {
+    /*height: auto;*/
+}
 .noti_bubble {
     position:absolute;    /* This breaks the div from the normal HTML document. */
     top: 0px;
@@ -105,4 +108,39 @@ li a {
     float: left;
     margin-top: 5px;
     color: white;
+}
+.contact_ul_wrapper {
+    /*height: 0px;*/
+    display: none;
+    transition: all 1s ease;
+}
+.new_user_wrapper {
+    display: inline-block;
+    width: 200px;
+}
+.new_user_wrapper li {
+    transition: all 0.3s linear;
+    cursor: auto;
+}
+.new_user_wrapper li:hover {
+    background-color: black;
+    color: white;
+}
+.new_user_details img {
+    width: 25%;
+    height: auto;
+    margin-right: 5%;
+}
+.new_user_details div {
+    display: inline-block;
+    width: 63%;
+}
+.more_button {
+    padding: 10px;
+    text-align: center;
+}
+.more_button:hover {
+    color: white;
+    font-weight: bold;
+    background-color: black;
 }
