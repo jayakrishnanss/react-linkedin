@@ -44,10 +44,10 @@ class Message extends React.Component {
 	}
 
    render() {
-      var messageBody,msgDiv=[]
+      var messageBody=[],msgDiv=[]
       if(this.state.hover||this.state.hoverBody){
         if(this.state.messages){
-          for(var i=0,j=this.state.messages.length;i<j;i++)
+          for(var i=0,j=this.state.messages.length;i<j;i++){
             msgDiv.push(<div className="message_row">
                           <div className="profilePic">
                             <img src="../../assets/images/ghost_person.png"/>
@@ -62,6 +62,7 @@ class Message extends React.Component {
                             </div>
                           </div>
                         </div>)
+          }
         }
         else{
           msgDiv.push(<div className="spinner"><img src="../../assets/images/rolling.gif"/></div>)
