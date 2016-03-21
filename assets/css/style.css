@@ -47,10 +47,50 @@ h4 {
     height: 42px;
 }
 #header-sub{
-    background-color: #3f3f3f;
-    color: #e9f2fd;
-    border: 1px solid #3f3f3f;
-    padding: 10px 200px;
-    height: 29px;
+    background-color: #333;
+    padding: 0px 184px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 0px 18px;
+    text-decoration: none;
+}
+
+#noti_Container {
+    position:relative;     /* This is crucial for the absolutely positioned element */
+    float: right;
+    width:36px;
+    height:36px;
+    cursor: pointer;
+}
+.noti_bubble {
+    position:absolute;    /* This breaks the div from the normal HTML document. */
+    top: 0px;
+    right:-6px;
+    padding:1px 2px 1px 7px;
+    background-color:red; /* you could use a background image if you'd like as well */
+    color:white;
+    font-weight:bold;
+    font-size:0.80em;
+    height: 16px;
+    width: 20px;
+    border-radius:2px;
+    box-shadow:1px 1px 1px gray;
+}
+#linkedin_logo {
+    float: left;
+}
