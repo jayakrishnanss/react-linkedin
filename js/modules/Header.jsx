@@ -1,4 +1,5 @@
 import React from 'react';
+import Message from './message.jsx'
 import HeaderActions from '../actions/HeaderMenuActions';
 
 class Header extends React.Component {
@@ -25,8 +26,8 @@ class Header extends React.Component {
 				    <div className="noti_bubble">3</div>
 				</div>
 	            <div id="noti_Container">
-				    <img width="36" height="36" src="/assets/images/message_icon.png" alt="message" />
-				    <div className="noti_bubble">2</div>
+	            	<div className="noti_bubble">0</div>
+				    <Message />
 				</div>	
             </div>
             <div id="header-sub">
