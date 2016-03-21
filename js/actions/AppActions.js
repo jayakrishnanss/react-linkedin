@@ -24,6 +24,12 @@ var AppActions = {
 			type: 'INSERT_SKILL',
 			skill: skill
 		})
+	postMessage:function(data){
+		AppDispatcher.dispatch({
+	      type: 'POST_MESSAGE',
+	      data: data
+	    });
+
 	}
 }
 
