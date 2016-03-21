@@ -10,23 +10,23 @@ export default class ShowMessageArea extends React.Component {
         };
         this.show = this.show.bind(this);
     }
-	show(){
+    show(){
       this.setState({ showMessageArea: true })
     }
     hide(){
       this.setState({ showMessageArea: false })
     }
-     render() {
-     	let show = {
-       "display": this.state.showMessageArea ? 'block' : 'none'
-     }
-     	return (
-        <div>
-            <button className="btn btn-info" onClick={this.show}>Post Something</button>
-            <div className="showMsgArea" style={show}>
-          		<MessageArea />
-       		</div>
-      </div>
-    );
-     }
+    render() {
+        let show = {
+            "display": this.state.showMessageArea ? 'block' : 'none'
+        }
+        return (
+            <div>
+                <button className="btn btn-info" onClick={this.show}>Post Something</button>
+                <div className="showMsgArea" style={show}>
+                   <MessageArea />
+                </div>
+            </div>
+        );
+    }
 };
