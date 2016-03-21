@@ -4,10 +4,12 @@ import Login from '../modules/login.jsx';
 import LoginError from '../modules/loginError.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import LoginStore from '../stores/LoginStores';
+import ProfileWrapper from '../modules/profileComponents/profile.jsx'
 import MessageArea from '../modules/MessageArea.jsx';
 
+
 class BodyContainer extends React.Component {
-	
+
 	constructor(props, context) {
 
 	    super(props, context);
@@ -17,7 +19,9 @@ class BodyContainer extends React.Component {
 	}
 	onChange(selectedMenu) {
 		this.onChange.bind(this);
-		
+		if (selectedMenu == 'Profile') {
+			this.setState({view: <ProfileWrapper/>});
+		}
 	}
 	onLogin(userObj) {
 		this.onLogin.bind(this);
@@ -26,7 +30,7 @@ class BodyContainer extends React.Component {
 			this.setState({view: <MessageArea/>, error: ''});
 		} else {
 			this.setState({view: <Login/>, error: <LoginError/>});
-			
+
 		}
 	}
 	componentDidMount() {
@@ -46,7 +50,7 @@ class BodyContainer extends React.Component {
 	      	{this.state.error}
 	      	{this.state.view}
       	</div>
-         
+
       );
    }
 }
