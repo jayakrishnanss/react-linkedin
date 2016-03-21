@@ -6,4 +6,3 @@ import ContactWrapper from './js/modules/contact.jsx';
 import Home from './js/modules/HomePage.jsx';
 
 ReactDOM.render(<Home />, document.getElementById('app'))
-ReactDOM.render(<ContactWrapper />, document.getElementById('contact'));
