@@ -23,7 +23,7 @@ var MessageStore = assign({},EventEmitter.prototype,{
 AppDispatcher.register(function(payload){
 	switch(payload.type)
 	{
-		case 'ON_HOVER':
+		case 'ON_MESSAGE_ICON_HOVER':
 		 	for(var i=0,j=_messages.length;i<j;i++){
 		 		_messages.pop()
 		 	}

@@ -15,7 +15,7 @@ var AppActions = {
 	},
 	hover:function(){
 		AppDispatcher.dispatch({
-			type: 'ON_HOVER'			
+			type: 'ON_MESSAGE_ICON_HOVER'			
 		})
 	},
 	postMessage:function(data){
