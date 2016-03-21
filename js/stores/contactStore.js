@@ -17,23 +17,22 @@ var ContactStore = assign({},EventEmitter.prototype,{
 	},
 	removeChangeListener:function(callback){
 	   this.removeListener(CHANGE_EVENT, callback)
-   },
-   getUser:function(){
-       return users;
-   },
-   getNewUser:function(){
+    },
+    getNewUser:function(){
        return newUsers;
-   },
-   emitGetAllUsers:function(){
+    },
+    emitGetAllUsers:function(){
        this.emit(GET_ALL_USER_EVENT);
-   }
-   ,
-   addGetAllUserListener:function(callback){
+    },
+    addGetAllUserListener:function(callback){
        this.addListener(GET_ALL_USER_EVENT, callback)
-   },
-   removeGetAllUserListener:function(callback){
+    },
+    removeGetAllUserListener:function(callback){
       this.removeListener(GET_ALL_USER_EVENT, callback)
-  }
+    },
+    getUser:function(){
+     return users;
+    }
 });
 
 AppDispatcher.register(function(payload){
@@ -80,6 +79,7 @@ AppDispatcher.register(function(payload){
     				users.push(data.val());
     			})
     			ContactStore.emitGetAllUsers(users);
+                debugger;
     		});
             break;
         case 'GET_NEW_USERS':

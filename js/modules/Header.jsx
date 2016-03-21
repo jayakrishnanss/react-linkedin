@@ -28,11 +28,10 @@ class Header extends React.Component {
 		// });
 	}
 	componentDidMount() {
-	  ContactStore.addChangeListener(this.onGetUser)
+	  	ContactStore.addChangeListener(this.onGetUser)
 	}
-
 	componentWillUnmount() {
-	  ContactStore.removeChangeListener(this.onGetUser)
+	  	ContactStore.removeChangeListener(this.onGetUser)
 	}
 	onClickMenu(e) {
 		HeaderActions.clickHeaderMenu(e.target.innerHTML);
@@ -94,7 +93,7 @@ class ContactListEasyAccess extends React.Component {
 		$('.contact_ul_wrapper').hide();
 	}
 	gotoContactPage() {
-		AppActions.getUsers('get_users');
+		HeaderActions.clickHeaderMenu('more_contacts');
 	}
     render() {
 		var userList = this.props.users.map(function(user, i) {

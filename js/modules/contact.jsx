@@ -18,7 +18,6 @@ export default class ContactWrapper extends React.Component {
     }
 }
 class ContactListWrapper extends React.Component {
-
     render() {
         return (
             <div>
@@ -28,17 +27,16 @@ class ContactListWrapper extends React.Component {
     }
 }
 class ContactTable extends React.Component {
-
     constructor(props, context) {
 	    super(props, context);
 	    this.onGetAllUser = this.onGetAllUser.bind(this);
-        this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
+        this.state = {contacts: []};
 	}
     onGetAllUser() {
+        debugger;
         var users = [];
 		this.onGetAllUser.bind(this);
         users = ContactStore.getUser();
-        debugger;
         this.setState({contacts: users});
         if (users.length != 0) {
             NoContacts = (users[users.length-1].id) + 1;
@@ -46,7 +44,8 @@ class ContactTable extends React.Component {
         console.log(NoContacts);
 	}
     componentDidMount() {
-	  ContactStore.addGetAllUserListener(this.onGetAllUser);
+        AppActions.getUsers('get_users');
+        ContactStore.addGetAllUserListener(this.onGetAllUser);
 	}
 	componentWillUnmount() {
 	  ContactStore.removeGetAllUserListenerr(this.onGetAllUser);

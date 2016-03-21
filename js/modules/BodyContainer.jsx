@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import Login from '../modules/login.jsx';
 import Header from '../modules/Header.jsx';
 import ContactWrapper from '../modules/contact.jsx';
+import LoginError from '../modules/loginError.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import ContactStore from '../stores/contactStore';
 import LoginStore from '../stores/LoginStores';
+import MessageArea from '../modules/MessageArea.jsx';
 
 class BodyContainer extends React.Component {
 
@@ -14,7 +16,6 @@ class BodyContainer extends React.Component {
 	    super(props, context);
 	    this.onChange = this.onChange.bind(this);
 	    this.onLogin = this.onLogin.bind(this);
-		this.onGetUser = this.onGetUser.bind(this);
 		this.onGetAllUser = this.onGetAllUser.bind(this);
 	    this.state = {view: <Login/>};
 	}
@@ -25,11 +26,11 @@ class BodyContainer extends React.Component {
 		this.onLogin.bind(this);
 		if(userObj && userObj.length)
 		{
-			this.setState({view: <Header/>});
+			this.setState({view: <MessageArea/>, error: ''});
+		} else {
+			this.setState({view: <Login/>, error: <LoginError/>});
+
 		}
-	}
-	onGetUser() {
-		this.onGetUser.bind(this);
 	}
 	onGetAllUser() {
 		this.onGetAllUser.bind(this);
@@ -38,22 +39,19 @@ class BodyContainer extends React.Component {
 	componentDidMount() {
 	  HeaderMenuStore.addChangeListener(this.onChange);
 	  LoginStore.addChangeListener(this.onLogin);
-	  ContactStore.addChangeListener(this.onGetUser);
 	  ContactStore.addGetAllUserListener(this.onGetAllUser);
 	}
-
 	componentWillUnmount() {
 	  HeaderMenuStore.removeChangeListener(this.onChange);
 	  LoginStore.removeChangeListener(this.onLogin);
-	  ContactStore.removeChangeListener(this.onGetUser);
 	  ContactStore.removeGetAllUserListenerr(this.onGetAllUser);
 	}
-
 	render() {
-
       return (
-      	<div>{this.state.view}</div>
-
+      	<div>
+	      	{this.state.error}
+	      	{this.state.view}
+      	</div>
       );
    }
 }
