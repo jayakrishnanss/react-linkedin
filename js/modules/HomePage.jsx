@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import Header from '../modules/Header.jsx';
 import BodyContainer from '../modules/BodyContainer.jsx';
 
-
 class HomePage extends React.Component {
 	
 	constructor(props, context) {
@@ -21,7 +20,6 @@ class HomePage extends React.Component {
       		<Header/>
       		<BodyContainer/>
       	</div>
-         
       );
    }
 }

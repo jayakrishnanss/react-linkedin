@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Login from '../modules/login.jsx';
-import Header from '../modules/Header.jsx';
+import LoginError from '../modules/loginError.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import LoginStore from '../stores/LoginStores';
+import MessageArea from '../modules/MessageArea.jsx';
 
 class BodyContainer extends React.Component {
 	
@@ -12,7 +13,7 @@ class BodyContainer extends React.Component {
 	    super(props, context);
 	    this.onChange = this.onChange.bind(this);
 	    this.onLogin = this.onLogin.bind(this);
-	    this.state = {view: <Login/>};
+	    this.state = {view: <Login/>, error: ''};
 	}
 	onChange(selectedMenu) {
 		this.onChange.bind(this);
@@ -22,7 +23,10 @@ class BodyContainer extends React.Component {
 		this.onLogin.bind(this);
 		if(userObj && userObj.length)
 		{
-			this.setState({view: <Header/>});
+			this.setState({view: <MessageArea/>, error: ''});
+		} else {
+			this.setState({view: <Login/>, error: <LoginError/>});
+			
 		}
 	}
 	componentDidMount() {
@@ -38,7 +42,10 @@ class BodyContainer extends React.Component {
 	render() {
 
       return (
-      	<div>{this.state.view}</div>
+      	<div>
+	      	{this.state.error}
+	      	{this.state.view}
+      	</div>
          
       );
    }
