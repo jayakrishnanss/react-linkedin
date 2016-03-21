@@ -4,9 +4,10 @@ import Login from '../modules/login.jsx';
 import Header from '../modules/Header.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import LoginStore from '../stores/LoginStores';
+import ProfileWrapper from '../modules/profileComponents/profile.jsx'
 
 class BodyContainer extends React.Component {
-	
+
 	constructor(props, context) {
 
 	    super(props, context);
@@ -16,7 +17,9 @@ class BodyContainer extends React.Component {
 	}
 	onChange(selectedMenu) {
 		this.onChange.bind(this);
-		
+		if (selectedMenu == 'Profile') {
+			this.setState({view: <ProfileWrapper/>});
+		}
 	}
 	onLogin(userObj) {
 		this.onLogin.bind(this);
@@ -39,7 +42,7 @@ class BodyContainer extends React.Component {
 
       return (
       	<div>{this.state.view}</div>
-         
+
       );
    }
 }
