@@ -8,7 +8,7 @@ var loggedUser = [];
 
 var LoginStore = assign({},EventEmitter.prototype,{
 	emitLogin:function(){
-		this.emit(CHANGE_EVENT);
+		this.emit(CHANGE_EVENT,loggedUser);
 	},
 	addChangeListener:function(callback){
 		this.addListener(CHANGE_EVENT, callback)
@@ -29,7 +29,6 @@ AppDispatcher.register(function(payload){
 		this.firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Users');
 		this.firebaseRef.once('value',function(snapshot){
 			loggedUser = [];
-			debugger;
 			snapshot.forEach(function(data){
 				var user = data.val();
 				if(user.username === payload.data.uname && user.password === payload.data.pword){
@@ -39,7 +38,7 @@ AppDispatcher.register(function(payload){
 					return true;
 				}
 			})
-			LoginStore.emitLogin();
+			LoginStore.emitLogin(loggedUser);
 		});
 
 		break;
