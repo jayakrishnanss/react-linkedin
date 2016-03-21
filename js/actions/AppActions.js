@@ -17,6 +17,12 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			type: 'ON_HOVER'			
 		})
+	},
+	postMessage:function(data){
+		AppDispatcher.dispatch({
+	      type: 'POST_MESSAGE',
+	      data: data
+	    });
 	}
 }
 

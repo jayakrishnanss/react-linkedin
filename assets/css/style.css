@@ -94,3 +94,14 @@ li a {
 #linkedin_logo {
     float: left;
 }
+.messageArea {
+    margin-bottom:10px;
+}
+.showMsgArea {
+  display: none;
+}
+.success {
+  color: #6BA956;
+  margin-left: 100px;
+  font-family: monospace;
+}
