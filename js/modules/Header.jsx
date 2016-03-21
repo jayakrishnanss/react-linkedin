@@ -4,6 +4,8 @@ import ContactStore from '../stores/contactStore';
 import HeaderActions from '../actions/HeaderMenuActions';
 import $ from "jquery";
 
+var newUserCount = 0;
+
 class Header extends React.Component {
 	constructor(props, context) {
 	    super(props, context);
@@ -24,6 +26,11 @@ class Header extends React.Component {
 		$('.contact_ul_wrapper').show();
 		AppActions.getNewUsers('get_users');
 		var users = ContactStore.getNewUser();
+		users.forEach(function(user) {
+			if (user.new_user == true) {
+				newUserCount++;
+			}
+		});
 		this.setState({contacts: users});
 	}
 	hideNewlyAddedContacts() {

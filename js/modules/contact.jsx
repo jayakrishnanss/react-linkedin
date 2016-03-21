@@ -75,17 +75,22 @@ class ContactElement extends React.Component {
         var userList = this.props.users.map(function(user, i) {
             return (
                 <li key={user.id}>
+                    <div className="user_profPic">
+
+                    </div>
                     <div className="user_wrapper">
-                        <span className="icon_edit icon_user" onClick={this.editContact.bind(this, i)} title="Edit this contact">
-                            <i className="fa fa-pencil-square-o fa-2x"></i>
-                        </span>
                         <div className="user_details">
                             <div className="user_name">{user.name}</div>
                             <div>{user.email}</div>
                         </div>
-                        <span className="icon_delete icon_user" onClick={this.deleteContact.bind(this, i)} title="Delete this contact">
-                            <i className="fa fa-times fa-2x"></i>
-                        </span>
+                        <div className="user_icons">
+                            <span className="icon_edit icon_user" onClick={this.editContact.bind(this, i)} title="Edit this contact">
+                                <i className="fa fa-pencil-square-o fa-2x"></i>
+                            </span>
+                            <span className="icon_delete icon_user" onClick={this.deleteContact.bind(this, i)} title="Delete this contact">
+                                <i className="fa fa-times fa-2x"></i>
+                            </span>
+                        </div>
                     </div>
                 </li>
             );
@@ -120,7 +125,7 @@ class ContactForm extends React.Component{
     addContact() {
         var name = $('#name').val(),
             email = $('#email').val();
-        var obj = {'id': NoContacts, 'name': name, 'email': email}
+        var obj = {'id': NoContacts, 'name': name, 'email': email, 'new_user': true}
         AppActions.addContactClick(obj);
         $('.add_form_wrapper').hide();
     }
