@@ -4,7 +4,7 @@ import Login from '../modules/login.jsx';
 import LoginError from '../modules/loginError.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import LoginStore from '../stores/LoginStores';
-import ShowMessageArea from '../modules/ShowMessageArea.jsx';
+import MessageArea from '../modules/MessageArea.jsx';
 
 class BodyContainer extends React.Component {
 	
@@ -23,7 +23,7 @@ class BodyContainer extends React.Component {
 		this.onLogin.bind(this);
 		if(userObj && userObj.length)
 		{
-			this.setState({view: <ShowMessageArea/>, error: ''});
+			this.setState({view: <MessageArea/>, error: ''});
 		} else {
 			this.setState({view: <Login/>, error: <LoginError/>});
 			
