@@ -75,12 +75,10 @@ AppDispatcher.register(function(payload){
             var first = true;
     		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             newUsers = [];
-            for (var i = 1; i <= 3; i++) {
-                firebaseRef.limitToLast(i).on("child_added", function(snap) {
-                    newUsers.push(snap.val());
-                });
+            firebaseRef.limitToLast(3).on("child_added", function(snap) {
+                newUsers.push(snap.val());
+            });
             ContactStore.emitAddContact(newUsers);
-            }
             break;
 	}
 

@@ -25,13 +25,17 @@ class Header extends React.Component {
 	showNewlyAddedContacts() {
 		$('.contact_ul_wrapper').show();
 		AppActions.getNewUsers('get_users');
-		var users = ContactStore.getNewUser();
-		users.forEach(function(user) {
+		newUserCount = 0;
+		var newUsers = ContactStore.getNewUser();
+		newUsers.forEach(function(user) {
 			if (user.new_user == true) {
 				newUserCount++;
+				var obj = $.extend(true,{},user);
+				obj.new_user = false;
+		        AppActions.updateContact(obj);
 			}
 		});
-		this.setState({contacts: users});
+		this.setState({contacts: newUsers});
 	}
 	hideNewlyAddedContacts() {
 		$('.contact_ul_wrapper').hide();
@@ -45,12 +49,12 @@ class Header extends React.Component {
 	            </a>
 	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
 				    <i className="fa fa-user-plus fa-2x" onClick={this.populateContacts}></i>
-				    <div className="noti_bubble">3</div>
+					<NotificationBubble count={newUserCount}/>
 					<ContactListEasyAccess users={this.state.contacts} />
 				</div>
 	            <div id="noti_Container">
 				    <i className="fa fa-whatsapp fa-2x"></i>
-				    <div className="noti_bubble">2</div>
+				    <NotificationBubble count={2}/>
 				</div>
             </div>
             <div id="header-sub">
@@ -63,6 +67,14 @@ class Header extends React.Component {
         </div>
       );
    	}
+}
+
+class NotificationBubble extends React.Component {
+	render () {
+		return (
+			<div className="noti_bubble">{this.props.count}</div>
+		)
+	}
 }
 
 class ContactListEasyAccess extends React.Component {

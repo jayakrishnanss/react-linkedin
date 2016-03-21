@@ -54,6 +54,10 @@ class ContactTable extends React.Component {
     render() {
         return(
             <div className="user_list_wrapper">
+                <div className='user_list_header'>
+                    <i className="fa fa-users fa-2x"></i>
+                    People You May Know
+                </div>
                 <ContactElement users={this.state.contacts} />
             </div>
         )
@@ -96,6 +100,7 @@ class ContactElement extends React.Component {
             );
         }.bind(this));
         return(
+
             <ul className="user_list">
                 {userList}
             </ul>
@@ -132,7 +137,7 @@ class ContactForm extends React.Component{
     updateUser() {
         var name = $('#name').val(),
             email = $('#email').val();
-        var obj = {'id': NoContacts, 'name': name, 'email': email}
+        var obj = {'id': NoContacts, 'name': name, 'email': email, 'new_user': true}
         AppActions.updateContact(obj);
         $('.add_form_wrapper').hide();
     }
