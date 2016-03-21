@@ -55,14 +55,12 @@ class Login extends React.Component {
                       <div className="col-md-offset-5 col-md-3">
                           <div className="form-login">
                               <h4>Login Form</h4>
-                              <input type="text" id="userName"
-                              className="form-control input-sm chat-input setHeight" placeholder="username" value={this.state.username}
-                              onChange={this.userNameChanged}/>
+                              <input type="text" autofocus id="userName" className="form-control input-sm chat-input setHeight" placeholder="username" value={this.state.username} onChange={this.userNameChanged}/>
                               <input type="password" id="userPassword" className="form-control input-sm chat-input setHeight"
                               placeholder="password" value={this.state.password} onChange={this.passwordChanged}/>
                               <div className="wrapper">
                                   <span className="group-btn">
-                                      <button onClick={this.login.bind(this,login)} disabled={this.buttonDisabled()} 
+                                      <button onClick={this.login.bind(this,login)} disabled={this.buttonDisabled()}
                                       className="btn btn-primary btn-md">Login<i className="fa fa-sign-in"></i></button>
                                   </span>
                               </div>

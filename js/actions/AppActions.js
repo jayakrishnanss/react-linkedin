@@ -43,7 +43,18 @@ var AppActions = {
 	      data: data
 	    });
 	},
-	postMessage:function(data){
+	fetchProfile:function(user) {
+		AppDispatcher.dispatch({
+			type: 'FETCH_PROFILE',
+			user: user
+		})
+	},
+	insertSkills: function (skill) {
+		AppDispatcher.dispatch({
+			type: 'INSERT_SKILL',
+			skill: skill
+		})},
+	postMessage: function(data) {
 		AppDispatcher.dispatch({
 	      type: 'POST_MESSAGE',
 	      data: data

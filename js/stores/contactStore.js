@@ -79,6 +79,7 @@ AppDispatcher.register(function(payload){
     				users.push(data.val());
     			})
     			ContactStore.emitGetAllUsers(users);
+                console.log(users);
                 debugger;
     		});
             break;
@@ -92,6 +93,10 @@ AppDispatcher.register(function(payload){
                 });
                 ContactStore.emitAddContact(newUsers);
             });
+            break;
+        case 'CLICK_HEADER_MENU':
+            debugger;
+            ContactStore.emitGetAllUsers();
             break;
 	}
 

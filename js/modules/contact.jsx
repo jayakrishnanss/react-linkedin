@@ -27,29 +27,30 @@ class ContactListWrapper extends React.Component {
     }
 }
 class ContactTable extends React.Component {
-    constructor(props, context) {
-	    super(props, context);
-	    this.onGetAllUser = this.onGetAllUser.bind(this);
-        this.state = {contacts: []};
-	}
-    onGetAllUser() {
-        debugger;
-        var users = [];
-		this.onGetAllUser.bind(this);
-        users = ContactStore.getUser();
-        this.setState({contacts: users});
-        if (users.length != 0) {
-            NoContacts = (users[users.length-1].id) + 1;
-        }
-        console.log(NoContacts);
-	}
-    componentDidMount() {
-        AppActions.getUsers('get_users');
-        ContactStore.addGetAllUserListener(this.onGetAllUser);
-	}
-	componentWillUnmount() {
-	  ContactStore.removeGetAllUserListenerr(this.onGetAllUser);
-	}
+    // constructor(props, context) {
+	//     super(props, context);
+	//     this.onGetAllUser = this.onGetAllUser.bind(this);
+    //     this.state = {contacts: []};
+	// }
+    // onGetAllUser() {
+    //     debugger;
+    //     var users = [];
+	// 	this.onGetAllUser.bind(this);
+    //     users = ContactStore.getUser();
+    //     this.setState({contacts: users});
+    //     if (users.length != 0) {
+    //         NoContacts = (users[users.length-1].id) + 1;
+    //     }
+    //     console.log(NoContacts);
+	// }
+    // componentDidMount() {
+    //     AppActions.getUsers('get_users');
+    //     ContactStore.addGetAllUserListener(this.onGetAllUser);
+    //     debugger;
+	// }
+	// componentWillUnmount() {
+	//   ContactStore.removeGetAllUserListenerr(this.onGetAllUser);
+	// }
     render() {
         return(
             <div className="user_list_wrapper">

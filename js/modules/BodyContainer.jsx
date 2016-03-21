@@ -7,7 +7,9 @@ import LoginError from '../modules/loginError.jsx';
 import HeaderMenuStore from '../stores/HeaderActionStore';
 import ContactStore from '../stores/contactStore';
 import LoginStore from '../stores/LoginStores';
+import ProfileWrapper from '../modules/profileComponents/profile.jsx'
 import MessageArea from '../modules/MessageArea.jsx';
+
 
 class BodyContainer extends React.Component {
 
@@ -21,6 +23,12 @@ class BodyContainer extends React.Component {
 	}
 	onChange(selectedMenu) {
 		this.onChange.bind(this);
+		if (selectedMenu == 'Profile') {
+			this.setState({view: <ProfileWrapper/>});
+		}
+		else if (selectedMenu == 'MoreContacts') {
+			this.setState({view: <ContactWrapper/>});
+		}
 	}
 	onLogin(userObj) {
 		this.onLogin.bind(this);
@@ -34,7 +42,7 @@ class BodyContainer extends React.Component {
 	}
 	onGetAllUser() {
 		this.onGetAllUser.bind(this);
-		this.setState({view: <ContactWrapper />});
+		// this.setState({view: <ContactWrapper />});
 	}
 	componentDidMount() {
 	  HeaderMenuStore.addChangeListener(this.onChange);

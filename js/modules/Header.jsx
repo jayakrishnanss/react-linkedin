@@ -14,7 +14,6 @@ class Header extends React.Component {
 		this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
 	}
 	onGetUser() {
-		this.onGetUser.bind(this);
 		var newUsers = ContactStore.getNewUser();
 		newUsers = newUsers.reverse();
 		this.setState({contacts: newUsers});
@@ -28,16 +27,13 @@ class Header extends React.Component {
 		// });
 	}
 	componentDidMount() {
-	  	ContactStore.addChangeListener(this.onGetUser)
+	  	ContactStore.addChangeListener(this.onGetUser.bind(this));
 	}
 	componentWillUnmount() {
-	  	ContactStore.removeChangeListener(this.onGetUser)
+	  	ContactStore.removeChangeListener(this.onGetUser.bind(this));
 	}
 	onClickMenu(e) {
 		HeaderActions.clickHeaderMenu(e.target.innerHTML);
-	}
-	populateContacts() {
-		AppActions.getUsers('get_users');
 	}
 	showNewlyAddedContacts() {
 		$('.contact_ul_wrapper').show();
@@ -85,17 +81,13 @@ class NotificationBubble extends React.Component {
 }
 
 class ContactListEasyAccess extends React.Component {
-
 	showNewlyAddedContacts() {
 		$('.contact_ul_wrapper').show();
 	}
 	hideNewlyAddedContacts() {
 		$('.contact_ul_wrapper').hide();
 	}
-	gotoContactPage() {
-		HeaderActions.clickHeaderMenu('more_contacts');
-	}
-    render() {
+	render() {
 		var userList = this.props.users.map(function(user, i) {
             return (
                 <li key={user.id}>
