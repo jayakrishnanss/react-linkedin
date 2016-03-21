@@ -13,7 +13,7 @@ var AppActions = {
 	      data: data
 	    });
 	},
-	fetchProfile: function(user) {
+	fetchProfile:function(user) {
 		AppDispatcher.dispatch({
 			type: 'FETCH_PROFILE',
 			user: user
@@ -23,13 +23,12 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			type: 'INSERT_SKILL',
 			skill: skill
-		})
-	postMessage:function(data){
+		})},
+	postMessage: function(data) {
 		AppDispatcher.dispatch({
 	      type: 'POST_MESSAGE',
 	      data: data
 	    });
-
 	}
 }
 
