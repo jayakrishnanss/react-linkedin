@@ -9,12 +9,30 @@ var newUserCount = 0;
 class Header extends React.Component {
 	constructor(props, context) {
 	    super(props, context);
-	    this.onChange = this.onChange.bind(this);
+		this.onGetUser = this.onGetUser.bind(this);
 		this.showNewlyAddedContacts = this.showNewlyAddedContacts.bind(this);
 		this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
 	}
-	onChange() {
-		this.onChange.bind(this);
+	onGetUser() {
+		this.onGetUser.bind(this);
+		var newUsers = ContactStore.getNewUser();
+		newUsers = newUsers.reverse();
+		this.setState({contacts: newUsers});
+		// newUsers.forEach(function(user) {
+		// 	if (user.new_user == true) {
+		// 		newUserCount++;
+		// 		var obj = $.extend(true,{},user);
+		// 		obj.new_user = false;
+		//         AppActions.updateContact(obj);
+		// 	}
+		// });
+	}
+	componentDidMount() {
+	  ContactStore.addChangeListener(this.onGetUser)
+	}
+
+	componentWillUnmount() {
+	  ContactStore.removeChangeListener(this.onGetUser)
 	}
 	onClickMenu(e) {
 		HeaderActions.clickHeaderMenu(e.target.innerHTML);
@@ -24,18 +42,8 @@ class Header extends React.Component {
 	}
 	showNewlyAddedContacts() {
 		$('.contact_ul_wrapper').show();
-		AppActions.getNewUsers('get_users');
+		AppActions.getNewUsers('get_new_users');
 		newUserCount = 0;
-		var newUsers = ContactStore.getNewUser();
-		newUsers.forEach(function(user) {
-			if (user.new_user == true) {
-				newUserCount++;
-				var obj = $.extend(true,{},user);
-				obj.new_user = false;
-		        AppActions.updateContact(obj);
-			}
-		});
-		this.setState({contacts: newUsers});
 	}
 	hideNewlyAddedContacts() {
 		$('.contact_ul_wrapper').hide();
@@ -48,7 +56,7 @@ class Header extends React.Component {
 	                <i className="fa fa-linkedin-square fa-2x"></i>
 	            </a>
 	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
-				    <i className="fa fa-user-plus fa-2x" onClick={this.populateContacts}></i>
+				    <i className="fa fa-user-plus fa-2x"></i>
 					<NotificationBubble count={newUserCount}/>
 					<ContactListEasyAccess users={this.state.contacts} />
 				</div>

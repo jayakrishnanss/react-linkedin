@@ -31,13 +31,14 @@ class ContactTable extends React.Component {
 
     constructor(props, context) {
 	    super(props, context);
-	    this.onChange = this.onChange.bind(this);
+	    this.onGetAllUser = this.onGetAllUser.bind(this);
         this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
 	}
-    onChange() {
+    onGetAllUser() {
         var users = [];
-		this.onChange.bind(this);
+		this.onGetAllUser.bind(this);
         users = ContactStore.getUser();
+        debugger;
         this.setState({contacts: users});
         if (users.length != 0) {
             NoContacts = (users[users.length-1].id) + 1;
@@ -45,11 +46,10 @@ class ContactTable extends React.Component {
         console.log(NoContacts);
 	}
     componentDidMount() {
-	  ContactStore.addChangeListener(this.onChange);
+	  ContactStore.addGetAllUserListener(this.onGetAllUser);
 	}
-
 	componentWillUnmount() {
-	  ContactStore.removeChangeListener(this.onChange);
+	  ContactStore.removeGetAllUserListenerr(this.onGetAllUser);
 	}
     render() {
         return(

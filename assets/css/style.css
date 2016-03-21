@@ -116,6 +116,7 @@ li a {
 }
 .new_user_wrapper {
     display: inline-block;
+    z-index: 3;
     width: 200px;
 }
 .new_user_wrapper li {

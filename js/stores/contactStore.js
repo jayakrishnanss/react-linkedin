@@ -4,6 +4,7 @@ import {EventEmitter} from 'events';
 import assign from 'object-assign';
 
 var CHANGE_EVENT = 'change';
+var GET_ALL_USER_EVENT = 'get_all_user';
 var users = [],
     newUsers = [];
 
@@ -22,7 +23,17 @@ var ContactStore = assign({},EventEmitter.prototype,{
    },
    getNewUser:function(){
        return newUsers;
+   },
+   emitGetAllUsers:function(){
+       this.emit(GET_ALL_USER_EVENT);
    }
+   ,
+   addGetAllUserListener:function(callback){
+       this.addListener(GET_ALL_USER_EVENT, callback)
+   },
+   removeGetAllUserListener:function(callback){
+      this.removeListener(GET_ALL_USER_EVENT, callback)
+  }
 });
 
 AppDispatcher.register(function(payload){
@@ -68,17 +79,19 @@ AppDispatcher.register(function(payload){
     			snapshot.forEach(function(data){
     				users.push(data.val());
     			})
-    			ContactStore.emitAddContact(users);
+    			ContactStore.emitGetAllUsers(users);
     		});
             break;
         case 'GET_NEW_USERS':
             var first = true;
     		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             newUsers = [];
-            firebaseRef.limitToLast(3).on("child_added", function(snap) {
-                newUsers.push(snap.val());
+            firebaseRef.on('value', function(snapshot){
+                firebaseRef.limitToLast(3).on("child_added", function(snap) {
+                    newUsers.push(snap.val());
+                });
+                ContactStore.emitAddContact(newUsers);
             });
-            ContactStore.emitAddContact(newUsers);
             break;
 	}
 
