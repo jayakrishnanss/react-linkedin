@@ -21,7 +21,6 @@ var AppActions = {
 		})
 	},
 	insertSkills: function (skill) {
-		debugger;
 		AppDispatcher.dispatch({
 			type: 'INSERT_SKILL',
 			skill: skill

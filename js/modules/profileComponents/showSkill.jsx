@@ -11,7 +11,6 @@ export default class ShowSkill extends React.Component {
     this.state = {skillSet: []}
   }
   componentWillMount(){
-    debugger;
     let userSkills = ProfileStore.getUser();
     this.setState({skillSet: userSkills});
   }
