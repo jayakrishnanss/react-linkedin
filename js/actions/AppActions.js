@@ -43,6 +43,17 @@ var AppActions = {
 	      data: data
 	    });
 	},
+	hover:function(){
+		AppDispatcher.dispatch({
+			type: 'ON_MESSAGE_ICON_HOVER'			
+		})
+	},
+	postMessage:function(data){
+		AppDispatcher.dispatch({
+	      type: 'POST_MESSAGE',
+	      data: data
+	    });
+	},
 	fetchProfile:function(user) {
 		AppDispatcher.dispatch({
 			type: 'FETCH_PROFILE',
@@ -53,13 +64,8 @@ var AppActions = {
 		AppDispatcher.dispatch({
 			type: 'INSERT_SKILL',
 			skill: skill
-		})},
-	postMessage: function(data) {
-		AppDispatcher.dispatch({
-	      type: 'POST_MESSAGE',
-	      data: data
-	    });
-	}
+		})
+	},
 }
 
 export default AppActions;

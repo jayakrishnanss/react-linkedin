@@ -1,6 +1,7 @@
 import React from 'react';
 import AppActions from '../actions/AppActions';
 import ContactStore from '../stores/contactStore';
+import Message from './message.jsx'
 import HeaderActions from '../actions/HeaderMenuActions';
 import $ from "jquery";
 
@@ -56,8 +57,8 @@ class Header extends React.Component {
 					<ContactListEasyAccess users={this.state.contacts} />
 				</div>
 	            <div id="noti_Container">
-				    <i className="fa fa-whatsapp fa-2x"></i>
-				    <NotificationBubble count={2}/>
+	            	<div className="noti_bubble">0</div>
+				    <Message />
 				</div>
             </div>
             <div id="header-sub">
