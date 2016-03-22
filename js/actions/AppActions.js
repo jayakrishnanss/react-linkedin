@@ -24,6 +24,11 @@ var AppActions = {
 	      data: data
 	    });
 	},
+	getMessage:function(){
+		AppDispatcher.dispatch({
+	      type: 'GET_MESSAGE'
+	    });
+	},
 	fetchProfile:function(user) {
 		AppDispatcher.dispatch({
 			type: 'FETCH_PROFILE',

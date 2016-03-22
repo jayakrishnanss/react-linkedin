@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import AppActions from '../actions/AppActions';
 import PostMessageStore from '../stores/PostMessageStores';
+import MessageList from '../modules/MessageList.jsx';
+import BodyContainer from '../modules/BodyContainer.jsx';
 
 var message;
 class messageArea extends React.Component {
@@ -58,6 +60,9 @@ class messageArea extends React.Component {
 				                </div>
 				        	</div>
 				    	</div>
+					</div>
+					<div>
+						<MessageList/>
 					</div>
 			</div>
 		);

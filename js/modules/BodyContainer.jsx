@@ -22,6 +22,9 @@ class BodyContainer extends React.Component {
 		if (selectedMenu == 'Profile') {
 			this.setState({view: <ProfileWrapper/>});
 		}
+		if (selectedMenu == 'Home') {
+			this.setState({view: <MessageArea/>});
+		}
 	}
 	onLogin(userObj) {
 		this.onLogin.bind(this);

@@ -220,3 +220,38 @@ Skill section styles
   margin-left: 100px;
   font-family: monospace;
 }
+.messageList {
+  position: relative;
+}
+.messageContainer{
+  height: 300px;
+  overflow: scroll;
+}
+.messageBox{
+  width: 65%;
+  height: 150px;
+  border: 1px solid #b0b5af;
+  margin: 20px; 
+  background-color: #cccccc;
+}
+.title{
+  font-size: 20px;
+  border-bottom: 1px solid #d0ffc7;
+}
+.messageBody, .title, .messageFooter{
+  margin-left: 5%;
+  padding: 10px;
+  width: 80%;
+}
+.messageBody{
+  font-size: 12px;
+}
+.time, .username{
+  font-size: 10px;
+  font-style: italic;
+  display: inline-block;
+  width: 49%;
+}
+.time{
+ text-align: right;
+}
