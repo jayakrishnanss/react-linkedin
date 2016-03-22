@@ -12,7 +12,7 @@ class Header extends React.Component {
 	    super(props, context);
 		this.onGetUser = this.onGetUser.bind(this);
 		this.showNewlyAddedContacts = this.showNewlyAddedContacts.bind(this);
-		this.state = {contacts: [{'id': '01', 'name': 'No name', 'email': 'no email'}, {'id': '02', 'name': 'No name', 'email': 'no email'}]};
+		this.state = {contacts: []};
 	}
 	onGetUser() {
 		var newUsers = ContactStore.getNewUser();
@@ -51,7 +51,7 @@ class Header extends React.Component {
 	            <a id="linkedin_logo" href="/">
 	                <i className="fa fa-linkedin-square fa-2x"></i>
 	            </a>
-	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
+	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts.bind(this)} onMouseLeave={this.hideNewlyAddedContacts.bind(this)}>
 				    <i className="fa fa-user-plus fa-2x"></i>
 					<NotificationBubble count={newUserCount}/>
 					<ContactListEasyAccess users={this.state.contacts} />
@@ -89,22 +89,33 @@ class ContactListEasyAccess extends React.Component {
 		$('.contact_ul_wrapper').hide();
 	}
 	render() {
-		var userList = this.props.users.map(function(user, i) {
-            return (
-                <li key={user.id}>
-                    <div className="new_user_details">
-						<img src="../../assets/images/user.jpg" />
-						<div className="user_name">{user.name}</div>
-                    </div>
-                </li>
-            );
-        }.bind(this));
+		if (this.props.users.length > 0) {
+			var userList = this.props.users.map(function(user, i) {
+	            return (
+	                <li key={user.id}>
+	                    <div className="new_user_details">
+							<img src="../../assets/images/user.jpg" />
+							<div className="user_name">{user.name}</div>
+	                    </div>
+	                </li>
+	            );
+	        }.bind(this));
+		}
+		else {
+			var userList =
+			<div className="spinner">
+				<img src="../../assets/images/rolling.gif"/>
+			</div>
+		}
         return (
             <div className="contact_ul_wrapper" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
+				<div>
+					Contacts (0)
+				</div>
 				<ul className="new_user_wrapper">
 					{userList}
-					<div className="more_button" onClick={this.gotoContactPage}>More</div>
 				</ul>
+				<div className="more_button" onClick={this.gotoContactPage}>More</div>
             </div>
         )
     }

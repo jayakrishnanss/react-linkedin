@@ -100,14 +100,20 @@ li a {
     color: white;
 }
 .contact_ul_wrapper {
-    /*height: 0px;*/
     display: none;
+    width: 210px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
     transition: all 1s ease;
 }
 .new_user_wrapper {
     display: inline-block;
-    z-index: 3;
     width: 200px;
+    background-color: white;
+    color: black;
+    z-index: 3;
+    margin: 0;
 }
 .new_user_wrapper li {
     transition: all 0.3s linear;
