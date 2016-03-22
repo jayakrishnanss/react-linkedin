@@ -6,7 +6,8 @@ import assign from 'object-assign';
 var CHANGE_EVENT = 'change';
 var GET_ALL_USER_EVENT = 'get_all_user';
 var users = [],
-    newUsers = [];
+    newUsers = [],
+    firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
 
 var ContactStore = assign({},EventEmitter.prototype,{
     emitAddContact:function(){
@@ -39,27 +40,21 @@ AppDispatcher.register(function(payload){
 	switch(payload.type)
 	{
     	case 'ADD_CONTACT':
-    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             firebaseRef.push(payload.item);
-            AppActions.getUsers('get_users');
             break;
 
         case 'UPDATE_CONTACT':
-            var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             firebaseRef.on('value',function(snapshot){
                 snapshot.forEach(function(data){
                     var user = data.val();
-                    debugger;
                     if (user.id == payload.item.id) {
                         firebaseRef.child(data.name()).update(payload.item);
                     }
                 })
-                AppActions.getUsers('get_users');
             });
             break;
 
         case 'DELETE_CONTACT':
-    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             firebaseRef.on('value',function(snapshot){
     			snapshot.forEach(function(data){
                     var user = data.val();
@@ -67,25 +62,21 @@ AppDispatcher.register(function(payload){
                         firebaseRef.child(data.name()).remove();
     				}
     			})
-                AppActions.getUsers('get_users');
     		});
             break;
 
         case 'GET_USERS':
-    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
     		firebaseRef.on('value',function(snapshot){
     			users = [];
     			snapshot.forEach(function(data){
     				users.push(data.val());
     			})
     			ContactStore.emitGetAllUsers(users);
-                console.log(users);
-                debugger;
+                console.log('All Users :- ' +users);
     		});
             break;
         case 'GET_NEW_USERS':
             var first = true;
-    		var firebaseRef = new Firebase('https://sample-app2.firebaseio.com/Contact');
             newUsers = [];
             firebaseRef.on('value', function(snapshot){
                 firebaseRef.limitToLast(3).on("child_added", function(snap) {
@@ -93,10 +84,6 @@ AppDispatcher.register(function(payload){
                 });
                 ContactStore.emitAddContact(newUsers);
             });
-            break;
-        case 'CLICK_HEADER_MENU':
-            debugger;
-            ContactStore.emitGetAllUsers();
             break;
 	}
 

@@ -51,7 +51,7 @@ class Header extends React.Component {
 	            <a id="linkedin_logo" href="/">
 	                <i className="fa fa-linkedin-square fa-2x"></i>
 	            </a>
-	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts.bind(this)} onMouseLeave={this.hideNewlyAddedContacts.bind(this)}>
+	            <div id="noti_Container" className="contact_icon" onMouseEnter={this.showNewlyAddedContacts.bind(this)}>
 				    <i className="fa fa-user-plus fa-2x"></i>
 					<NotificationBubble count={newUserCount}/>
 					<ContactListEasyAccess users={this.state.contacts} />
@@ -88,6 +88,9 @@ class ContactListEasyAccess extends React.Component {
 	hideNewlyAddedContacts() {
 		$('.contact_ul_wrapper').hide();
 	}
+	gotoContactPage() {
+		HeaderActions.clickHeaderMenu('MoreContacts');
+	}
 	render() {
 		if (this.props.users.length > 0) {
 			var userList = this.props.users.map(function(user, i) {
@@ -108,9 +111,12 @@ class ContactListEasyAccess extends React.Component {
 			</div>
 		}
         return (
-            <div className="contact_ul_wrapper" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
-				<div>
-					Contacts (0)
+            <div className="contact_ul_wrapper" onMouseEnter={this.showNewlyAddedContacts.bind(this)} onMouseLeave={this.hideNewlyAddedContacts.bind(this)}>
+				<div className="contact_header">
+					Contacts(0)
+					<span className="caret_msg">
+						<i className="fa fa-caret-right"></i>
+					</span>
 				</div>
 				<ul className="new_user_wrapper">
 					{userList}

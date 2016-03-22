@@ -102,7 +102,7 @@ li a {
 .contact_ul_wrapper {
     display: none;
     width: 210px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #444;
     color: white;
     padding: 5px;
     transition: all 1s ease;
@@ -115,9 +115,13 @@ li a {
     z-index: 3;
     margin: 0;
 }
+.contact_ul_wrapper .contact_header {
+    padding: 10px 5px;
+    font-weight: bold;
+}
 .new_user_wrapper li {
-    transition: all 0.3s linear;
     cursor: auto;
+    transition: all 0.5s linear;
 }
 .new_user_wrapper li:hover {
     background-color: black;
