@@ -25,7 +25,6 @@ class App extends React.Component {
 	}
 
 	render() {
-
       return (
          <div>
           <button onClick={this.getInputValue}>Login</button>

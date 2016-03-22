@@ -7,6 +7,36 @@ var AppActions = {
 	      item: item
 	    });
 	},
+	addContactClick : function(item){
+		AppDispatcher.dispatch({
+			type: 'ADD_CONTACT',
+			item: item
+	    });
+	},
+	deleteContactClick : function(item){
+		AppDispatcher.dispatch({
+			type: 'DELETE_CONTACT',
+			item: item
+	    });
+	},
+	updateContact : function(item){
+		AppDispatcher.dispatch({
+			type: 'UPDATE_CONTACT',
+			item: item
+	    });
+	},
+	getUsers : function(item){
+		AppDispatcher.dispatch({
+			type: 'GET_USERS',
+			item: item
+		});
+	},
+	getNewUsers : function(item){
+		AppDispatcher.dispatch({
+			type: 'GET_NEW_USERS',
+			item: item
+		});
+	},
 	login:function(data){
 		AppDispatcher.dispatch({
 	      type: 'CLICK_LOGIN',
@@ -15,7 +45,7 @@ var AppActions = {
 	},
 	hover:function(){
 		AppDispatcher.dispatch({
-			type: 'ON_MESSAGE_ICON_HOVER'			
+			type: 'ON_MESSAGE_ICON_HOVER'
 		})
 	},
 	postMessage:function(data){
