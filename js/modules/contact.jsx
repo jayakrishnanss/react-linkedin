@@ -72,7 +72,7 @@ class ContactElement extends React.Component {
         NoContacts = this.props.users[i].id;
     }
     deleteContact(i) {
-        AppActions.deleteContactClick(this.props.users[i].name);
+        AppActions.deleteContact(this.props.users[i].name);
     }
     render() {
         var userList = this.props.users.map(function(user, i) {
@@ -130,7 +130,7 @@ class ContactForm extends React.Component{
             email = $('#email').val();
         var obj = {'id': NoContacts, 'name': name, 'email': email, 'new_user': true};
         $('.add_form_wrapper').hide();
-        AppActions.addContactClick(obj);
+        AppActions.addContact(obj);
     }
     updateUser() {
         var name = $('#name').val(),
