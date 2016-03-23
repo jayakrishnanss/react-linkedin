@@ -22,12 +22,12 @@ var LoginStore = assign({},EventEmitter.prototype,{
 });
 
 AppDispatcher.register(function(payload){
+	var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/');
 	switch(payload.type)
 	{
 		case 'CLICK_LOGIN':
-
-		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Users');
-		firebaseRef.once('value',function(snapshot){
+		var usersRef = firebaseRef.child("Users");
+		usersRef.once('value',function(snapshot){
 			loggedUser = [];
 			snapshot.forEach(function(data){
 				var user = data.val();

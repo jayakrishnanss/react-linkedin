@@ -21,14 +21,14 @@ import PostMessageStore from '../stores/PostMessageStores';
     this.setState({messageList: getMessage});
   }
   render() {
-     let createmessageList = function(data) {
-         return <div>
+     let createmessageList = function(data, i) {
+         return <div key={i}>
                     <div className="messageBox">
                         <div className="title"><strong>{data.title}</strong></div>
                         <div className="messageBody">{data.message}</div>
                         <div className="messageFooter">
-                        <div className="username">Posted by <strong> username </strong></div>
-                        <div className="time">Posted on <strong> {data.time}</strong></div>
+                          <div className="username">Posted by <strong> username </strong></div>
+                          <div className="time">Posted on <strong> {data.time}</strong></div>
                         </div>
                     </div>
                 </div>

@@ -30,18 +30,18 @@ var PostMessageStore = assign({},EventEmitter.prototype,{
 });
 
 AppDispatcher.register(function(payload){
+	var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/');
+	var messageRef = firebaseRef.child("Message");
 	switch(payload.type){
 
 		case 'POST_MESSAGE' :
-		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
-		var newMessageRef = firebaseRef.push();
+		var newMessageRef = messageRef.push();
 		newMessageRef.set({ 'id': newMessageRef.key(), 'title': payload.data.title, 'message': payload.data.message, 'time': new Date().toString().replace(/\sGMT.*$/, "")});
 		PostMessageStore.emitPostMessage();
 		break;
 
 		case 'GET_MESSAGE':
-  		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
-  		firebaseRef.once('value',function(snapshot){
+  		messageRef.once('value',function(snapshot){
   	    var data;
         snapshot.forEach(function(message){
 			data = message.val();
