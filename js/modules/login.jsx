@@ -50,6 +50,7 @@ class Login extends React.Component {
              pword : this.state.password
          };
         return (
+          <div className="login">
             <div className="container">
                   <div className="row">
                       <div className="col-md-offset-5 col-md-3">
@@ -68,6 +69,7 @@ class Login extends React.Component {
                       </div>
                   </div>
               </div>
+          </div>
         );
      }
 

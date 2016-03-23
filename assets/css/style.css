@@ -6,6 +6,13 @@ body {
   padding: 25px;
   position: fixed;
 }
+.login {
+    margin-top: -10px;
+    height: 89.5vh;
+    background-image: url('../images/login_page.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .form-login {
     background-color: #808080;
     padding-top: 10px;
