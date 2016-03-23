@@ -1,6 +1,5 @@
 body {
-  background-color:#fff;
-  -webkit-font-smoothing: antialiased;
+  background-color: #f0f0f0;
   font: normal 14px Roboto, arial, sans-serif;
 }
 .container {
@@ -8,21 +7,22 @@ body {
   position: fixed;
 }
 .form-login {
-  background-color: #808080;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 15px;
-  border-color: #d2d2d2;
-  border-width: 5px;
-  box-shadow: 0 1px 0 #cfcfcf;
+    background-color: #808080;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
 }
+
 h4 {
-  border: 0 solid #fff;
-  border-bottom-width: 1px;
-  padding-bottom: 10px;
-  text-align: center;
+    border:0 solid #fff;
+    border-bottom-width:1px;
+    padding-bottom:10px;
+    text-align: center;
 }
 .form-control {
   border-radius: 10px;
@@ -62,12 +62,22 @@ li a {
   text-decoration: none;
 }
 #noti_Container {
-  position: relative;
-  /* This is crucial for the absolutely positioned element */
-  float: right;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
+    position:relative;     /* This is crucial for the absolutely positioned element */
+    float: right;
+    width:36px;
+    height:36px;
+    cursor: pointer;
+    /*margin-top: 5px;*/
+    margin: 5px;
+}
+.contact_icon {
+    transition: all 0.3s linear;
+    color: white;
+}
+.contact_icon:hover {
+    color: rgba(0, 160, 220, 1);
+}
+.contact_icon:hover .contact_ul_wrapper ul {
 }
 .noti_bubble {
   position: absolute;
@@ -86,12 +96,57 @@ li a {
   box-shadow: 1px 1px 1px gray;
 }
 #linkedin_logo {
-  float: left;
+    float: left;
+    margin-top: 5px;
+    color: white;
+}
+.contact_ul_wrapper {
+    display: none;
+    width: 210px;
+    background-color: #444;
+    color: white;
+    padding: 5px;
+    transition: all 1s ease;
+}
+.new_user_wrapper {
+    display: inline-block;
+    width: 200px;
+    background-color: white;
+    color: black;
+    z-index: 3;
+    margin: 0;
+}
+.contact_ul_wrapper .contact_header {
+    padding: 10px 5px;
+    font-weight: bold;
+}
+.new_user_wrapper li {
+    cursor: auto;
+    transition: all 0.5s linear;
+}
+.new_user_wrapper li:hover {
+    background-color: black;
+    color: white;
+}
+.new_user_details img {
+    width: 25%;
+    height: auto;
+    margin-right: 5%;
+}
+.new_user_details div {
+    display: inline-block;
+    width: 63%;
+}
+.more_button {
+    padding: 10px;
+    text-align: center;
+}
+.more_button:hover {
+    color: white;
+    font-weight: bold;
+    background-color: black;
 }
 
-/*
-Profile page styles
-*/
 .profile_header {
   display: flex;
   flex-direction: row;
