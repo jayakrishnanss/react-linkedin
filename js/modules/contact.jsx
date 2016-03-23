@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppActions from '../actions/AppActions';
 import ContactStore from '../stores/contactStore';
-import ContactForm from './AddContactForm.jsx';
 import $ from "jquery";
 
 var NoContacts = 0;
@@ -49,6 +48,7 @@ class ContactTable extends React.Component {
 	}
 	componentWillUnmount() {
         ContactStore.removeGetAllUserListenerr(this.onGetAllUser);
+        AppActions.getUsers('get_users');
 	}
     render() {
         return(
@@ -72,7 +72,7 @@ class ContactElement extends React.Component {
         NoContacts = this.props.users[i].id;
     }
     deleteContact(i) {
-        AppActions.deleteContactClick(this.props.users[i].name);
+        AppActions.deleteContact(this.props.users[i].name);
     }
     render() {
         var userList = this.props.users.map(function(user, i) {
@@ -99,7 +99,6 @@ class ContactElement extends React.Component {
             );
         }.bind(this));
         return(
-
             <ul className="user_list">
                 {userList}
             </ul>
@@ -116,6 +115,47 @@ class AddContactButton extends React.Component {
         return(
             <div className="add-contact">
                 <button onClick={this.showPopup}>Add New</button>
+            </div>
+        )
+    }
+}
+
+class ContactForm extends React.Component{
+
+    hidePopup() {
+        $('.add_form_wrapper').hide();
+    }
+    addContact() {
+        var name = $('#name').val(),
+            email = $('#email').val();
+        var obj = {'id': NoContacts, 'name': name, 'email': email, 'new_user': true};
+        $('.add_form_wrapper').hide();
+        AppActions.addContact(obj);
+    }
+    updateUser() {
+        var name = $('#name').val(),
+            email = $('#email').val();
+        var obj = {'id': NoContacts, 'name': name, 'email': email, 'new_user': false}
+        $('.add_form_wrapper').hide();
+        AppActions.updateContact(obj);
+    }
+    render() {
+        return(
+            <div className="add_form_wrapper">
+                <form className="add_form" onSubmit={this.addContact}>
+                    <div className="content_wrapper">
+                        <label>Name : </label>
+                        <input type="text" id="name" placeholder="Name"/>
+                    </div>
+                    <div className="content_wrapper">
+                        <label>Email : </label>
+                        <input type="text" id="email" placeholder="Email"/>
+                    </div>
+                    <input className="button submit_button" type="submit" name="submit_button" value="Submit"/>
+                    <input className="button update_button" type="button" value="Update" onClick={this.updateUser}/>
+                    <input className="button cancel_button" type="button" name="cancel_button" onClick={this.hidePopup} value="Cancel"/>
+
+                </form>
             </div>
         )
     }

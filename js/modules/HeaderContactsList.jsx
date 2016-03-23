@@ -4,6 +4,11 @@ import HeaderActions from '../actions/HeaderMenuActions';
 import $ from "jquery";
 
 class ContactListEasyAccess extends React.Component {
+	constructor(props, context) {
+	    super(props, context);
+		this.showNewlyAddedContacts.bind(this);
+		this.hideNewlyAddedContacts.bind(this);
+	}
 	showNewlyAddedContacts() {
 		$('.contact_ul_wrapper').show();
 	}
@@ -13,11 +18,17 @@ class ContactListEasyAccess extends React.Component {
 	gotoContactPage() {
 		HeaderActions.clickHeaderMenu('MoreContacts');
 	}
+    updateUserStatus(i) {
+        var obj = $.extend(true,{},this.props.users[i]);
+        obj.new_user = false;
+        AppActions.updateContact(obj);
+        AppActions.getNewUsers('get_new_users');
+    }
 	render() {
 		if (this.props.users.length > 0) {
 			var userList = this.props.users.map(function(user, i) {
 	            return (
-	                <li key={user.id}>
+	                <li key={user.id} onClick={this.updateUserStatus.bind(this, i)}>
 	                    <div className="new_user_details">
 							<img src="../../assets/images/user.jpg" />
 							<div className="user_name">{user.name}</div>
@@ -33,7 +44,7 @@ class ContactListEasyAccess extends React.Component {
 			</div>
 		}
         return (
-            <div className="contact_ul_wrapper" onMouseEnter={this.showNewlyAddedContacts.bind(this)} onMouseLeave={this.hideNewlyAddedContacts.bind(this)}>
+            <div className="contact_ul_wrapper" onMouseEnter={this.showNewlyAddedContacts} onMouseLeave={this.hideNewlyAddedContacts}>
 				<div className="contact_header">
 					Contacts(0)
 					<span className="caret_msg">

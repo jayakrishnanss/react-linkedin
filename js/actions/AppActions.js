@@ -7,13 +7,13 @@ var AppActions = {
 	      item: item
 	    });
 	},
-	addContactClick : function(item){
+	addContact : function(item){
 		AppDispatcher.dispatch({
 			type: 'ADD_CONTACT',
 			item: item
 	    });
 	},
-	deleteContactClick : function(item){
+	deleteContact : function(item){
 		AppDispatcher.dispatch({
 			type: 'DELETE_CONTACT',
 			item: item

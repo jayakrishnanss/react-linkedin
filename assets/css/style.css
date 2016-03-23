@@ -121,7 +121,7 @@ li a {
     font-weight: bold;
 }
 .new_user_wrapper li {
-    cursor: auto;
+    cursor: pointer;
     transition: all 0.5s linear;
 }
 .new_user_wrapper li:hover {

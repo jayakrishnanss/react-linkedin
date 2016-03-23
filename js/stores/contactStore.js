@@ -41,6 +41,8 @@ AppDispatcher.register(function(payload){
 	{
     	case 'ADD_CONTACT':
             firebaseRef.push(payload.item);
+            ContactStore.emitAddContact('add_user');
+            ContactStore.emitGetAllUsers('add_user');
             break;
 
         case 'UPDATE_CONTACT':
@@ -52,6 +54,8 @@ AppDispatcher.register(function(payload){
                     }
                 })
             });
+            ContactStore.emitAddContact('update_user');
+            ContactStore.emitGetAllUsers('update_user');
             break;
 
         case 'DELETE_CONTACT':
@@ -63,6 +67,8 @@ AppDispatcher.register(function(payload){
     				}
     			})
     		});
+            ContactStore.emitAddContact('delete_user');
+            ContactStore.emitGetAllUsers('delete_user');
             break;
 
         case 'GET_USERS':
