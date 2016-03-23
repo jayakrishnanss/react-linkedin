@@ -33,15 +33,15 @@ AppDispatcher.register(function(payload){
 	switch(payload.type){
 
 		case 'POST_MESSAGE' :
-		this.firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
-		var newMessageRef = this.firebaseRef.push();
+		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
+		var newMessageRef = firebaseRef.push();
 		newMessageRef.set({ 'id': newMessageRef.key(), 'title': payload.data.title, 'message': payload.data.message, 'time': new Date().toString().replace(/\sGMT.*$/, "")});
 		PostMessageStore.emitPostMessage();
 		break;
 
 		case 'GET_MESSAGE':
-  		this.firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
-  		this.firebaseRef.once('value',function(snapshot){
+  		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Message');
+  		firebaseRef.once('value',function(snapshot){
   	    var data;
         snapshot.forEach(function(message){
 			data = message.val();

@@ -26,8 +26,8 @@ AppDispatcher.register(function(payload){
 	{
 		case 'CLICK_LOGIN':
 
-		this.firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Users');
-		this.firebaseRef.once('value',function(snapshot){
+		var firebaseRef = new Firebase('https://reactlinkedin.firebaseio.com/Users');
+		firebaseRef.once('value',function(snapshot){
 			loggedUser = [];
 			snapshot.forEach(function(data){
 				var user = data.val();
