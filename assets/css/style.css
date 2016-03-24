@@ -8,7 +8,7 @@ body {
 }
 .login {
     margin-top: -10px;
-    height: 89.5vh;
+    height: 80vh;
     background-image: url('../images/login_page.jpg');
     background-size: cover;
     background-repeat: no-repeat;

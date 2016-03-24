@@ -60,8 +60,8 @@ class BodyContainer extends React.Component {
 	render() {
       return (
       	<div>
-	      	{this.state.error}
 	      	{this.state.view}
+	      	{this.state.error}
       	</div>
       );
    }
