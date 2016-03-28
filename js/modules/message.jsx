@@ -1,28 +1,31 @@
-import React from 'react'
+import React,{ PropTypes } from 'react'
 import MessageStore from '../stores/MessageStore.js'
 import AppActions from '../actions/AppActions'
+import { Link } from 'react-router'
 
 var messages = []
 
-class Message extends React.Component {
+class Message extends React.Component {  
 
-	constructor(props){
-		super(props)
+	constructor(props,context){
+		super(props,context)
+    this.onHover = this.onHover.bind(this)
 		this.state = {hover:false}
 	}
 
   onHover(){
+    this.onHover.bind(this)
     messages = MessageStore.getMessages()
     this.setState({messages: messages})
   }
 
-   componentDidMount() {
-     MessageStore.addHoverListener(this.onHover.bind(this))
-   }
+  componentDidMount() {
+    MessageStore.addHoverListener(this.onHover)
+  }
 
-   componentWillUnmount() {
-    MessageStore.removeHoverListener(this.onHover.bind(this))
-   }
+  componentWillUnmount() {
+    MessageStore.removeHoverListener(this.onHover)
+  }
 
   showBody(){
     this.setState({hoverBody: true})
@@ -48,7 +51,8 @@ class Message extends React.Component {
       if(this.state.hover||this.state.hoverBody){
         if(this.state.messages){
           for(var i=0,j=this.state.messages.length;i<j;i++){
-            msgDiv.push(<div className="message_row">
+            msgDiv.push(<Link to={`/messages/${this.state.messages[i].id}`}>
+                        <div className="message_row">
                           <div className="profilePic">
                             <img src="../../assets/images/ghost_person.png"/>
                           </div>
@@ -61,7 +65,8 @@ class Message extends React.Component {
                               {this.state.messages[i].message}
                             </div>
                           </div>
-                        </div>)
+                        </div>
+                        </Link>)
           }
         }
         else{

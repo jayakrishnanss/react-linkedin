@@ -25,6 +25,7 @@ export default class Skills extends React.Component {
     addSkillToProfile(){
       this.setState({ showAddSkill: true })
     }
+    
   render() {
      let styleObj = {
        "display": this.state.showChangeLink ? 'block' : 'none'

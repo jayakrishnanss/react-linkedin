@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import Profile from '../profileComponents/profileHeader.jsx'
 import Skills from '../profileComponents/skills.jsx'
 import Education from '../profileComponents/education.jsx'

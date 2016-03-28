@@ -1,0 +1,81 @@
+.message_detailed{
+	width: 70%;
+	margin:auto;
+}
+
+.side_bar{
+	float: left;
+	height: 600px;
+	width: 35%;
+	border:1px solid #D8D8D8;
+}
+
+.presenter{
+	float: left;
+	min-height: 600px;
+	width: 64%;
+	border:1px solid #D8D8D8;
+	border-left: 0px;
+	vertical-align: top;
+}
+
+.side_bar .side_bar_head{
+	width: 100%;
+	height: 50px;
+	color:#000;
+	font-size: 16px;
+	border-bottom: 1px solid #D8D8D8;	
+	cursor: pointer;
+}
+
+.side_bar .side_bar_head label{
+	margin-top: 15px;
+	margin-left: 8px;
+}
+
+.side_bar i{
+	margin-left: 11px;
+}
+
+.send{
+	display: inline-block;
+	float: right;
+	height: 40px;
+	width: 40px;
+	background: #34b3e4;
+	border-radius: 20px;
+	color: white;
+	margin-right: 10px;
+    font-size: 21px;
+    margin-top: 5px;
+    padding-top: 6px;
+}
+
+.send:hover{
+	background: #0486C3;
+}
+
+.aside_message{
+	width: 100%;
+	height: 130px;
+}
+
+.aside_profilepic{
+	width: 38%;
+	height: 130px;
+	float: left;
+	text-align: center;
+	padding-top: 20px;
+}	
+
+.aside_profilepic img{
+	height: 50px;
+	width: 50px;
+	margin-top: 20px;
+}
+
+.aside_content{
+	width: 62%;
+	height: 130px;
+	float: left;
+}

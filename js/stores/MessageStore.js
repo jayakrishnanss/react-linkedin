@@ -7,7 +7,7 @@ var _messages = []
 
 var MessageStore = assign({},EventEmitter.prototype,{
 	emitHover:function(){
-		this.emit(HOVER_EVENT);
+		this.emit(HOVER_EVENT)
 	},
 	addHoverListener:function(callback){
 		this.addListener(HOVER_EVENT, callback)
@@ -24,19 +24,20 @@ AppDispatcher.register(function(payload){
 	switch(payload.type)
 	{
 		case 'ON_MESSAGE_ICON_HOVER':
-		 	for(var i=0,j=_messages.length;i<j;i++){
-		 		_messages.pop()
-		 	}
 		 	var firebaseRef = new Firebase('https://linkedinmessages.firebaseio.com/');
 
 		 	firebaseRef.once('value',function(record){
+		 		for(var i=0,j=_messages.length;i<j;i++){
+		 			_messages.pop()
+		 		}
 		 		record.forEach(function(data){
 		 			if(data)
-						_messages.push({from:data.val().from, head:data.val().head, message:data.val().message,
+						_messages.push({id:data.val().id,from:data.val().from, head:data.val().head, message:data.val().message,
 										timestamp:data.val().timestamp});
 					else
 						"no messages"
 				})
+				sessionStorage.setItem("messages", JSON.stringify(_messages))
 				MessageStore.emitHover();
 		 	});
 		break;
